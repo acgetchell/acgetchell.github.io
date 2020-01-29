@@ -18,9 +18,12 @@
       
       <guid>https://adamgetchell.org/posts/designing-a-metropolis-class/</guid>
       <description>Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.
-To do that you use the Metropolis-Hastings algorithm, which is a member of a more general class of algorithms known as Markov Chain Monte Carlo (MCMC) methods, in particular random walk Monte Carlo methods.
-Etc. etc.
-Anyways, to have good results, you need to calculate something, in this case perturbations of that universe via &amp;ldquo;ergodic moves&amp;quot;, performed millions of times per simulation, accurately.</description>
+$$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow \sum \frac{1}{C_t}e^{-S_{R}}$$
+Where $S_{EH}$ is the Einstein-Hilbert action:
+$$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
+And $S_{R}$ is the Regge action:
+$$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$
+N.B. A Wick rotation converts the factor of $i$ in the continuous path integral to a minus sign in the discrete path integral. In the Einstein-Hilbert action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$, the matter Lagrangian.</description>
     </item>
     
     <item>
@@ -29,8 +32,8 @@ Anyways, to have good results, you need to calculate something, in this case per
       <pubDate>Fri, 12 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://adamgetchell.org/posts/2016-08-11-public-identity/</guid>
-      <description>For awhile, I&#39;ve been interested in establishing a secure, verifiable, public identity.
-There are any number of reasons to do this, for example, authenticity and non-repudiation, frictionless sharing of files, and so forth. But that&#39;s the topic of another article. What I want to talk about here is how I got to the promised land.
+      <description>For awhile, I&amp;rsquo;ve been interested in establishing a secure, verifiable, public identity.
+There are any number of reasons to do this, for example, authenticity and non-repudiation, frictionless sharing of files, and so forth. But that&amp;rsquo;s the topic of another article. What I want to talk about here is how I got to the promised land.
 First up is Keybase, which is a really awesome software stack that maps your identity to your public keys.</description>
     </item>
     
