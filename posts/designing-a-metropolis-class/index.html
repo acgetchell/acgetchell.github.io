@@ -26,40 +26,43 @@
     
     
     <meta property="og:title" content="Designing a Metropolis Class" />
-<meta property="og:description" content="Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.
+<meta property="og:description" content="Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.1
 $$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow \sum \frac{1}{C_t}e^{-S_{R}}$$
 Where $S_{EH}$ is the Einstein-Hilbert action:
 $$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)&#43;\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
 And $S_{R}$ is the Regge action:
 $$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i&#43;\Lambda\sum_{simplices}V_i\right]$$
-N.B. A Wick rotation converts the factor of $i$ in the continuous path integral to a minus sign in the discrete path integral. In the Einstein-Hilbert action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$, the matter Lagrangian." />
+ What is a path integral and why would I want to compute it?
+ Good question! A reasonable answer will take us a bit far afield, and is the subject of another (pending) post. For the sake of argument, let&rsquo;s proceed on the assumption that it&rsquo;s something we want to compute." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://adamgetchell.org/posts/designing-a-metropolis-class/" />
-<meta property="article:published_time" content="2016-08-18T18:37:26-08:00" />
-<meta property="article:modified_time" content="2016-08-18T18:37:26-08:00" />
+<meta property="article:published_time" content="2020-01-30T00:39:09-08:00" />
+<meta property="article:modified_time" content="2020-01-30T00:39:09-08:00" />
 <meta itemprop="name" content="Designing a Metropolis Class">
-<meta itemprop="description" content="Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.
+<meta itemprop="description" content="Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.1
 $$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow \sum \frac{1}{C_t}e^{-S_{R}}$$
 Where $S_{EH}$ is the Einstein-Hilbert action:
 $$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)&#43;\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
 And $S_{R}$ is the Regge action:
 $$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i&#43;\Lambda\sum_{simplices}V_i\right]$$
-N.B. A Wick rotation converts the factor of $i$ in the continuous path integral to a minus sign in the discrete path integral. In the Einstein-Hilbert action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$, the matter Lagrangian.">
-<meta itemprop="datePublished" content="2016-08-18T18:37:26-08:00" />
-<meta itemprop="dateModified" content="2016-08-18T18:37:26-08:00" />
-<meta itemprop="wordCount" content="326">
+ What is a path integral and why would I want to compute it?
+ Good question! A reasonable answer will take us a bit far afield, and is the subject of another (pending) post. For the sake of argument, let&rsquo;s proceed on the assumption that it&rsquo;s something we want to compute.">
+<meta itemprop="datePublished" content="2020-01-30T00:39:09-08:00" />
+<meta itemprop="dateModified" content="2020-01-30T00:39:09-08:00" />
+<meta itemprop="wordCount" content="1059">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Designing a Metropolis Class"/>
-<meta name="twitter:description" content="Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.
+<meta name="twitter:description" content="Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.1
 $$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow \sum \frac{1}{C_t}e^{-S_{R}}$$
 Where $S_{EH}$ is the Einstein-Hilbert action:
 $$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)&#43;\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
 And $S_{R}$ is the Regge action:
 $$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i&#43;\Lambda\sum_{simplices}V_i\right]$$
-N.B. A Wick rotation converts the factor of $i$ in the continuous path integral to a minus sign in the discrete path integral. In the Einstein-Hilbert action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$, the matter Lagrangian."/>
+ What is a path integral and why would I want to compute it?
+ Good question! A reasonable answer will take us a bit far afield, and is the subject of another (pending) post. For the sake of argument, let&rsquo;s proceed on the assumption that it&rsquo;s something we want to compute."/>
 
   </head>
 
@@ -165,55 +168,171 @@ N.B. A Wick rotation converts the factor of $i$ in the continuous path integral 
       <h1 class="f1 athelas mb1">Designing a Metropolis Class</h1>
       
       
-      <time class="f6 mv4 dib tracked" datetime="2016-08-18T18:37:26-08:00">August 18, 2016</time>
+      <time class="f6 mv4 dib tracked" datetime="2020-01-30T00:39:09-08:00">January 30, 2020</time>
       
       
-        <span class="f6 mv4 dib tracked"> - 2 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 326 words</span>
+        <span class="f6 mv4 dib tracked"> - 5 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 1059 words</span>
       
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p><a href="http://arxiv.org/abs/hep-th/0105267">Causal Dynamical Triangulations</a> computes the path integral of the
-quantum universe numerically.</p>
+quantum universe numerically.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>$$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow  \sum \frac{1}{C_t}e^{-S_{R}}$$</p>
 <p>Where $S_{EH}$ is the Einstein-Hilbert action:</p>
 <p>$$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$</p>
 <p>And $S_{R}$ is the Regge action:</p>
 <p>$$S_{R}=\frac{1}{8\pi G}
 \left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$</p>
-<p><em>N.B. A <a href="https://en.wikipedia.org/wiki/Wick_rotation">Wick rotation</a> converts the factor of $i$ in the continuous path
-integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
-action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$,
-the matter Lagrangian. In the Regge action, we are essentially summing areas
-times angles for the first term plus volumes in the second term.</em></p>
-<p>To do this you use the <a href="http://thy.phy.bnl.gov/~creutz/mypubs/pub044.pdf">Metropolis-Hastings</a> algorithm, which is a member of
-a more general class of algorithms known as <a href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">Markov Chain Monte Carlo (MCMC)</a>
-methods, in particular random walk Monte Carlo methods.</p>
-<p>Etc. etc.</p>
-<p>Anyways, to have good results, you need to calculate something, in this case
-perturbations of that universe via &ldquo;<a href="http://www.sciencedirect.com/science/article/pii/055032139290012Z">ergodic moves</a>&quot;, performed millions of
-times per simulation, accurately.</p>
-<p>The simulated universe is an n-dimensional <a href="http://www.mathworks.com/help/matlab/math/delaunay-triangulation.html">Delaunay Triangulation</a>, which
-is a good discretized n-dimensional manifold, which allows us to do Regge
-calculus, or <a href="http://link.springer.com/article/10.1007/BF02733251">&ldquo;General Relativity without Coordinates&rdquo;</a>, conducted on said
+<blockquote>
+<p>What is a path integral and why would I want to compute it?</p>
+</blockquote>
+<p>Good question! A reasonable answer will take us a bit far afield, and is the
+subject of another (<em>pending</em>) post. For the sake of argument, let&rsquo;s proceed on
+the assumption that it&rsquo;s something we want to compute.</p>
+<p>To do this we use the <a href="http://thy.phy.bnl.gov/~creutz/mypubs/pub044.pdf">Metropolis-Hastings</a> algorithm, which is a
+member of a more general class of algorithms known as
+<a href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">Markov Chain Monte Carlo (MCMC)</a> methods, in particular random walk
+Monte Carlo methods.</p>
+<blockquote>
+<p>Is this another long digression?</p>
+</blockquote>
+<p>Probably.</p>
+<p>Anyways, to have good results, we need to calculate something, in this case
+perturbations of that universe via <a href="http://www.sciencedirect.com/science/article/pii/055032139290012Z">ergodic moves</a>, performed millions of
+times per simulation accurately.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>The simulated universe in general is an n-dimensional
+<a href="http://www.mathworks.com/help/matlab/math/delaunay-triangulation.html">Delaunay Triangulation</a>, which is a good<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> discretized n-dimensional
+manifold, which allows us to do <a href="https://en.wikipedia.org/wiki/Regge_calculus">Regge calculus</a>, or
+<a href="http://link.springer.com/article/10.1007/BF02733251">&ldquo;General Relativity without Coordinates&rdquo;</a>, conducted on said
 triangulations.</p>
 <p>Here is what these ergodic moves look like in 3D. By choosing to make these
-moves according to the Metropolis-Hastings algorithm, you effectively sample
+moves according to the <a href="http://thy.phy.bnl.gov/~creutz/mypubs/pub044.pdf">Metropolis-Hastings</a> algorithm, we effectively sample
 all possible paths as the universe moves from one time step to the next.</p>
+<blockquote>
+<p>Which is what the path integral is?</p>
+</blockquote>
+<p>Exactly.</p>
+<p>So, these are the moves which sample all possible (2+1) dimensional
+discretized universes.</p>
 <p><img src="/img/23move.png" alt="(2,3) move">
 <img src="/img/26move.png" alt="(2,6) move">
 <img src="/img/44move.png" alt="(4,4) move"></p>
-<p>Then you can collect data on the various ensembles, and get things like
+<blockquote>
+<p>So how do we use these moves?</p>
+</blockquote>
+<p>First, let&rsquo;s start by generating a random, foliated triangulation with $n$
+simplices and $t$ timeslices. <a href="https://github.com/acgetchell/CDT-plusplus/blob/develop/src/initialize.cpp">Here is a program to do that</a>.</p>
+<p>A foliated triangulation is a Delaunay triangulation with two criteria:</p>
+<ol>
+<li>Each vertex has a time value</li>
+<li>Each simplex contains vertices that differ by at most one time value</li>
+</ol>
+<p>In (2+1) dimensions, then, we are dealing with simplices that have 4 vertices
+(<em>an n-dimensional simplex always has n+1 vertices</em>).</p>
+<p>We can thus classify the
+(2+1) dimensional simplex as a (3,1) simplex (<em>3 vertices on the low timeslice
+and one vertex on the high timeslice</em>), a (2,2) simplex, or a (1,3) simplex.</p>
+<p>Likewise, we can name the moves similiarly.</p>
+<p>The top move takes a (3,1) simplex and a (2,2) simplex and converts it to a
+(3,1) simplex plus two (2,2) simplices. This is called a (2,3) move, and it&rsquo;s
+reverse is naturally a (3,2) move.</p>
+<p>The middle move takes a (1,3) simplex and a (3,1) simplex and converts it to
+three (1,3) simplices plus three (3,1) simplices. This is a (2,6) move along
+with the reverse (6,2) move.</p>
+<p>The bottom move takes two (1,3) simplces and two (3,1) simplices and makes
+different (1,3) and (3,1) simplices. This is called a (4,4) move, and it is
+it&rsquo;s own reverse.</p>
+<p>The CDT action is then based on the Regge action:</p>
+<p>$$S^{(3)} = 2\pi k\sqrt{\alpha}N_1^{TL} + N_3^{(3,1)}\left[-3k\text{arcsinh}\left(\frac{1}{\sqrt{3}\sqrt{4\alpha+1}}\right)-3k\sqrt{\alpha}\text{arccos}\left(\frac{2\alpha+1}{4\alpha+1}\right)-\frac{\lambda}{12}\sqrt{3\alpha+1}\right] + N_3^{(2,2)}\left[2k\text{arcsinh}\left(\frac{2\sqrt{2}\sqrt{2\alpha+1}}{4\alpha+1}\right)-4k\sqrt{\alpha}\text{arccos}\left(\frac{-1}{4\alpha+1}\right)-\frac{\lambda}{12}\sqrt{4\alpha+2}\right] $$</p>
+<p>This formula is the Regge action with some trigonometric identities applied
+after taking the length of spacelike edges to be 1 and the length of timelike
+edges to be $\alpha$. There are a few more constants thrown in for good
+measure.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>However complex this looks, it generates a number.</p>
+<p>Metropolis-Hastings then calculates the probability of making a move as:</p>
+<p>$$ P=a_{1}a_{2}$$</p>
+<p>Where:</p>
+<p>$$ a_{1}=\frac{\text{move}[i]}{\sum_i\text{move}[i]} $$</p>
+<p>And:</p>
+<p>$$ a_{2}=e^{\Delta S} $$</p>
+<p>$a_{1}$ is essentially the probability of making $\text{move}[i]$ versus
+making all other moves, and $a_{2}$ is the change in the action caused by
+making $\text{move}[i]$.</p>
+<p>This comes from the fact that we are using Markov chains, which forget all
+history except the previous move,<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> and the principle of detailed balance, which
+states that the probability of transitioning from $x\rightarrow x\prime$ equals
+the probability of $x\prime\rightarrow x$.</p>
+<p>By attempting a large number of moves, some of which will be accepted and
+some of which will be rejected, we can approximate the distribution thus
+producing an <a href="https://en.m.wikipedia.org/wiki/Statistical_ensemble_(mathematical_physics)">ensemble</a>.</p>
+<blockquote>
+<p>Now what?</p>
+</blockquote>
+<p>Now we can collect data on the various ensembles, and obtain things like
 <a href="http://arxiv.org/abs/hep-th/0505113">spectral dimension</a>, <a href="http://arxiv.org/abs/1305.2932">transition amplitudes</a>, or in my case, the
 <a href="http://www.slideshare.net/acgetchell/aps-48348528">Newtonian Limit</a>.</p>
-<p>So that&rsquo;s the backstory.</p>
-<p>To have results before, well, the end of the universe, you should use a fast
-language like C++ together with a battle-tested library capable of manipulating
-Delaunay triangulations in various dimensions, like <a href="https://www.cgal.org/">CGAL</a>.</p>
-<p>(Admittedly, the use of CGAL influenced the choice of language, as the
-<a href="https://github.com/CGAL/cgal-swig-bindings">SWIG Python bindings</a> weren&rsquo;t up to the task at the time.
-They still lack access to the dD Triangulation package, which I need to
-calculate 4D path integrals.)</p>
+<p>So that&rsquo;s the backstory (<em>modulo some digressions</em>).</p>
+<p>To have results before, well, the end of the universe, we should use a fast
+language, e.g. C++ together with a battle-tested library capable of manipulating
+Delaunay triangulations in various dimensions, e.g. <a href="https://www.cgal.org/">CGAL</a>.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+<p>Of course, that isn&rsquo;t enough, we have to write good code too. Thinking about
+the problem statement (that we&rsquo;ve spent most of this post on) conjures up
+<a href="https://en.wikipedia.org/wiki/Design_Patterns">GoF</a> patterns such as the <a href="https://sourcemaking.com/design_patterns/command/cpp/2">Command Pattern</a>, the <a href="https://sourcemaking.com/design_patterns/strategy">Strategy Pattern</a>, plus the
+<a href="https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem">Producer-consumer</a> problem.</p>
+<p>All which seem to have well tested, elegant solutions.</p>
+<blockquote>
+<p>But isn&rsquo;t <a href="https://www.manning.com/books/functional-programming-in-c-plus-plus">functional programming</a> the old/new hotness?</p>
+</blockquote>
+<p>We&rsquo;ll get into that next time!</p>
+<blockquote>
+<p>You didn&rsquo;t actually address the title of this post.</p>
+</blockquote>
+<p>I do need to sleep sometime.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>A <a href="https://en.wikipedia.org/wiki/Wick_rotation">Wick rotation</a> converts the factor of $i$ in the continuous path
+integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
+action we keep $\Lambda$, the Cosmological Constant, but ignore
+$\mathcal{L}_{M}$,
+the matter <a href="https://en.wikipedia.org/wiki/Lagrangian_(field_theory)">Lagrangian</a>. In the Regge action, we are essentially summing areas
+times angles for the first term plus volumes times the Cosmological constant
+in the second term. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Or at least, enough times for the ensembles to &ldquo;thermalize&rdquo; into
+representative distributions on which we can accurately sample the <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior</a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Good here means that the tools of differential geometry used on manifolds
+in General Relativity have analogs in piecewise simplicial discrete
+triangulations, i.e., triangulations are equivalent to manifolds. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>$N_{1}^{TL}$ is the number of timelike links connecting vertices on
+different time slices. $N_3^{(3,1)}$ is the number of (3,1) and (1,3) simplices.
+$N_{3}^{(2,2)}$ is the number of (2,2) simplices. $k=\frac{1}{8\pi G_N}$, where
+$G_N$ is Newton&rsquo;s constant. $\lambda=k*\Lambda$, where $\Lambda$ is the
+Cosmological constant. See? All numbers. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>It would be almost hopelessly complex if we had to consider the entire
+history of the universe to advance a single timestep! <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>I first attempted to do this from scratch in <a href="https://common-lisp.net/project/slime/">Lisp</a>, <a href="https://clojure.org">Clojure</a>, <a href="https://fsharp.org">F#</a>,
+and <a href="https://www.python.org">Python</a>. I quickly came to the realization that implementing <a href="http://www.mathworks.com/help/matlab/math/delaunay-triangulation.html">Delaunay
+Triangulations</a> and the necessary operations was, in fact, several PhDs worth
+of research in its own right (<em>which, in fact, <a href="https://www.cgal.org/">CGAL</a> is</em>). The choice of <a href="https://www.cgal.org/">CGAL</a>
+influenced the choice of language; <a href="https://www.python.org">Python</a> almost worked, but the
+<a href="https://github.com/CGAL/cgal-swig-bindings">SWIG Python bindings</a> weren&rsquo;t up to the task at the time. (<em>They still lack
+access to the new dD Triangulation package, which I will need for (3+1)D
+path integrals.</em>) <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 <ul class="pa0">
   
 </ul>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Adam&#39;s Entropy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Aug 2016 18:37:26 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jan 2020 00:39:09 -0800</lastBuildDate>
     
 	<atom:link href="https://adamgetchell.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,17 @@
     <item>
       <title>Designing a Metropolis Class</title>
       <link>https://adamgetchell.org/posts/designing-a-metropolis-class/</link>
-      <pubDate>Thu, 18 Aug 2016 18:37:26 -0800</pubDate>
+      <pubDate>Thu, 30 Jan 2020 00:39:09 -0800</pubDate>
       
       <guid>https://adamgetchell.org/posts/designing-a-metropolis-class/</guid>
-      <description>Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.
+      <description>Causal Dynamical Triangulations computes the path integral of the quantum universe numerically.1
 $$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow \sum \frac{1}{C_t}e^{-S_{R}}$$
 Where $S_{EH}$ is the Einstein-Hilbert action:
 $$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$
 And $S_{R}$ is the Regge action:
 $$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$
-N.B. A Wick rotation converts the factor of $i$ in the continuous path integral to a minus sign in the discrete path integral. In the Einstein-Hilbert action we keep $\Lambda$, the Cosmological Constant, but ignore $\mathcal{L}$, the matter Lagrangian.</description>
+ What is a path integral and why would I want to compute it?
+ Good question! A reasonable answer will take us a bit far afield, and is the subject of another (pending) post. For the sake of argument, let&amp;rsquo;s proceed on the assumption that it&amp;rsquo;s something we want to compute.</description>
     </item>
     
     <item>
