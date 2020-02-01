@@ -49,7 +49,7 @@ $$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i&#43;\Lambda\sum_{simplic
  Good question! A reasonable answer will take us a bit far afield, and is the subject of another (pending) post. For the sake of argument, let&rsquo;s proceed on the assumption that it&rsquo;s something we want to compute.">
 <meta itemprop="datePublished" content="2020-01-30T00:39:09-08:00" />
 <meta itemprop="dateModified" content="2020-01-30T00:39:09-08:00" />
-<meta itemprop="wordCount" content="1168">
+<meta itemprop="wordCount" content="1167">
 
 
 
@@ -172,7 +172,7 @@ $$S_{R}=\frac{1}{8\pi G} \left[\sum_{hinges}A_i\delta_i&#43;\Lambda\sum_{simplic
       
       
         <span class="f6 mv4 dib tracked"> - 6 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 1168 words</span>
+        <span class="f6 mv4 dib tracked"> - 1167 words</span>
       
     </header>
 
@@ -260,9 +260,9 @@ measure.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref
 making all other moves, and $a_{2}$ is the change in the action caused by
 making $\text{move}[i]$.</p>
 <p>This comes from the fact that we are using Markov chains, which forget all
-history except the previous move,<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> and the principle of detailed balance, which
-states that the probability of transitioning from $x\rightarrow x\prime$ equals
-the probability of $x\prime\rightarrow x$.</p>
+history except the previous move,<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> and the principle of detailed balance,
+which states that the probability of transitioning from $x\rightarrow x\prime$
+equals the probability of $x\prime\rightarrow x$.</p>
 <p>$a_{1}$ is easy to calculate: you just keep track of the total successful
 moves of each type.</p>
 <p>$a_{2}$ is likewise simple:</p>
@@ -273,7 +273,7 @@ $N_1^{TL}$ and $N_3^{(2,2)}$ by +1 each; a (3,2) by -1 each.</p>
 </li>
 <li>
 <p>A (2,6) move changes $N_3^{(3,1)}$ by +4 and $N_1^{TL}$ by +2; a (6,2)
-by -4 and -2 respectively</p>
+by -4 and -2 respectively.</p>
 </li>
 <li>
 <p>A (4,4) move doesn&rsquo;t change the action at all; $a_2 = 1$, and only $a_1$ is
@@ -312,11 +312,11 @@ the problem statement (that we&rsquo;ve spent most of this post on) conjures up
 <li id="fn:1" role="doc-endnote">
 <p>A <a href="https://en.wikipedia.org/wiki/Wick_rotation">Wick rotation</a> converts the factor of $i$ in the continuous path
 integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
-action we keep $\Lambda$, the Cosmological Constant, but ignore
+action we keep $\Lambda$, the Cosmological constant, but ignore
 $\mathcal{L}_{M}$,
-the matter <a href="https://en.wikipedia.org/wiki/Lagrangian_(field_theory)">Lagrangian</a>. In the Regge action, we are essentially summing areas
-times angles for the first term plus volumes times the Cosmological constant
-in the second term. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+the matter <a href="https://en.wikipedia.org/wiki/Lagrangian_(field_theory)">Lagrangian</a> density. In the Regge action, we are essentially
+summing areas times angles for the first term plus volumes times the
+Cosmological constant in the second term. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
 <p>Or at least, enough times for the ensembles to &ldquo;thermalize&rdquo; into
@@ -347,7 +347,7 @@ triangulations, indeed occurs. <a href="#fnref:6" class="footnote-backref" role=
 <li id="fn:7" role="doc-endnote">
 <p>I first attempted to do this from scratch in <a href="https://common-lisp.net/project/slime/">Lisp</a>, <a href="https://clojure.org">Clojure</a>, <a href="https://fsharp.org">F#</a>,
 and <a href="https://www.python.org">Python</a>. I quickly came to the realization that implementing <a href="http://www.mathworks.com/help/matlab/math/delaunay-triangulation.html">Delaunay
-Triangulations</a> and the necessary operations was, in fact, several PhDs worth
+Triangulations</a> and the necessary operations was several PhDs worth
 of research in its own right (<em>which, in fact, <a href="https://www.cgal.org/">CGAL</a> is</em>). The choice of <a href="https://www.cgal.org/">CGAL</a>
 influenced the choice of language; <a href="https://www.python.org">Python</a> almost worked, but the
 <a href="https://github.com/CGAL/cgal-swig-bindings">SWIG Python bindings</a> weren&rsquo;t up to the task at the time. (<em>They still lack
