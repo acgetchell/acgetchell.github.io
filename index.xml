@@ -6,10 +6,18 @@
     <description>Recent content on Adam&#39;s Entropy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jan 2020 00:39:09 -0800</lastBuildDate>
-    
-	<atom:link href="https://adamgetchell.org/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 20 May 2022 12:57:43 -0700</lastBuildDate><atom:link href="https://adamgetchell.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Tale of Two Test Frameworks</title>
+      <link>https://adamgetchell.org/posts/a-tale-of-two-test-frameworks/</link>
+      <pubDate>Fri, 20 May 2022 12:57:43 -0700</pubDate>
+      
+      <guid>https://adamgetchell.org/posts/a-tale-of-two-test-frameworks/</guid>
+      <description>As I&amp;rsquo;ve mentioned earlier, I&amp;rsquo;m writing some scientific code that needs to be accurate and fast.
+ That is, some entity other than me should check for inevitable errors.
+ So I started Test Driven Development using GoogleTest. Then I saw Behavior Driven Development (BDD) and switched to Catch2.
+ This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests.</description>
+    </item>
     
     <item>
       <title>Designing a Metropolis Class</title>

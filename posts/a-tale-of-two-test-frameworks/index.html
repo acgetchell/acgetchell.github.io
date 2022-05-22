@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Secure, Verifiable, Public Identity | Adam&#39;s Entropy</title>
+    <title>A Tale of Two Test Frameworks | Adam&#39;s Entropy</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="For awhile, I&rsquo;ve been interested in establishing a secure, verifiable, public identity.
-There are any number of reasons to do this, for example, authenticity and non-repudiation, frictionless sharing of files, and so forth. But that&rsquo;s the topic of another article. What I want to talk about here is how I got to the promised land.
-First up is Keybase, which is a really awesome software stack that maps your identity to your public keys.">
+    <meta name="description" content="As I&rsquo;ve mentioned earlier, I&rsquo;m writing some scientific code that needs to be accurate and fast.
+ That is, some entity other than me should check for inevitable errors.
+ So I started Test Driven Development using GoogleTest. Then I saw Behavior Driven Development (BDD) and switched to Catch2.
+ This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests.">
     <meta name="generator" content="Hugo 0.99.1" />
     
     
@@ -40,26 +41,29 @@ First up is Keybase, which is a really awesome software stack that maps your ide
 
     
     
-    <meta property="og:title" content="Secure, Verifiable, Public Identity" />
-<meta property="og:description" content="For awhile, I&rsquo;ve been interested in establishing a secure, verifiable, public identity.
-There are any number of reasons to do this, for example, authenticity and non-repudiation, frictionless sharing of files, and so forth. But that&rsquo;s the topic of another article. What I want to talk about here is how I got to the promised land.
-First up is Keybase, which is a really awesome software stack that maps your identity to your public keys." />
+    <meta property="og:title" content="A Tale of Two Test Frameworks" />
+<meta property="og:description" content="As I&rsquo;ve mentioned earlier, I&rsquo;m writing some scientific code that needs to be accurate and fast.
+ That is, some entity other than me should check for inevitable errors.
+ So I started Test Driven Development using GoogleTest. Then I saw Behavior Driven Development (BDD) and switched to Catch2.
+ This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://adamgetchell.org/posts/2016-08-11-public-identity/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2016-08-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-08-15T00:00:00+00:00" />
+<meta property="og:url" content="https://adamgetchell.org/posts/a-tale-of-two-test-frameworks/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-20T12:57:43-07:00" />
+<meta property="article:modified_time" content="2022-05-20T12:57:43-07:00" />
 
-<meta itemprop="name" content="Secure, Verifiable, Public Identity">
-<meta itemprop="description" content="For awhile, I&rsquo;ve been interested in establishing a secure, verifiable, public identity.
-There are any number of reasons to do this, for example, authenticity and non-repudiation, frictionless sharing of files, and so forth. But that&rsquo;s the topic of another article. What I want to talk about here is how I got to the promised land.
-First up is Keybase, which is a really awesome software stack that maps your identity to your public keys."><meta itemprop="datePublished" content="2016-08-12T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2016-08-15T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1056">
+<meta itemprop="name" content="A Tale of Two Test Frameworks">
+<meta itemprop="description" content="As I&rsquo;ve mentioned earlier, I&rsquo;m writing some scientific code that needs to be accurate and fast.
+ That is, some entity other than me should check for inevitable errors.
+ So I started Test Driven Development using GoogleTest. Then I saw Behavior Driven Development (BDD) and switched to Catch2.
+ This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests."><meta itemprop="datePublished" content="2022-05-20T12:57:43-07:00" />
+<meta itemprop="dateModified" content="2022-05-20T12:57:43-07:00" />
+<meta itemprop="wordCount" content="539">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Secure, Verifiable, Public Identity"/>
-<meta name="twitter:description" content="For awhile, I&rsquo;ve been interested in establishing a secure, verifiable, public identity.
-There are any number of reasons to do this, for example, authenticity and non-repudiation, frictionless sharing of files, and so forth. But that&rsquo;s the topic of another article. What I want to talk about here is how I got to the promised land.
-First up is Keybase, which is a really awesome software stack that maps your identity to your public keys."/>
+<meta name="twitter:title" content="A Tale of Two Test Frameworks"/>
+<meta name="twitter:description" content="As I&rsquo;ve mentioned earlier, I&rsquo;m writing some scientific code that needs to be accurate and fast.
+ That is, some entity other than me should check for inevitable errors.
+ So I started Test Driven Development using GoogleTest. Then I saw Behavior Driven Development (BDD) and switched to Catch2.
+ This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests."/>
 
 	
   </head>
@@ -176,7 +180,7 @@ First up is Keybase, which is a really awesome software stack that maps your ide
   <div id="sharing" class="mt3 ananke-socials">
     
       
-      <a href="https://twitter.com/share?url=https://adamgetchell.org/posts/2016-08-11-public-identity/&amp;text=Secure,%20Verifiable,%20Public%20Identity" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
+      <a href="https://twitter.com/share?url=https://adamgetchell.org/posts/a-tale-of-two-test-frameworks/&amp;text=A%20Tale%20of%20Two%20Test%20Frameworks" class="ananke-social-link twitter no-underline" aria-label="share on Twitter">
         
         <span class="icon"> <svg style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
 </span>
@@ -184,7 +188,7 @@ First up is Keybase, which is a really awesome software stack that maps your ide
       </a>
     
       
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://adamgetchell.org/posts/2016-08-11-public-identity/&amp;title=Secure,%20Verifiable,%20Public%20Identity" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://adamgetchell.org/posts/a-tale-of-two-test-frameworks/&amp;title=A%20Tale%20of%20Two%20Test%20Frameworks" class="ananke-social-link linkedin no-underline" aria-label="share on LinkedIn">
         
         <span class="icon"> <svg style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;"/>
@@ -196,131 +200,111 @@ First up is Keybase, which is a really awesome software stack that maps your ide
   </div>
 
 
-      <h1 class="f1 athelas mt3 mb1">Secure, Verifiable, Public Identity</h1>
+      <h1 class="f1 athelas mt3 mb1">A Tale of Two Test Frameworks</h1>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2016-08-12T00:00:00Z">August 12, 2016</time>
+      <time class="f6 mv4 dib tracked" datetime="2022-05-20T12:57:43-07:00">May 20, 2022</time>
       
 
       
       
-        <span class="f6 mv4 dib tracked"> - 5 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 1056 words </span>
+        <span class="f6 mv4 dib tracked"> - 3 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 539 words </span>
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>For awhile, I&rsquo;ve been interested in establishing a secure, verifiable, public
-identity.</p>
-<p>There are <a href="https://keybase.io/blog/2014-10-08/the-horror-of-a-secure-golden-key">any</a> <a href="http://www.zdnet.com/article/microsoft-secure-boot-key-debacle-causes-security-panic/">number</a> of reasons to do this, for example,
-<a href="https://www.youtube.com/watch?v=pDmj_xe7EIQ">authenticity</a> and <a href="http://security.stackexchange.com/questions/6730/what-is-the-difference-between-authenticity-and-non-repudiation">non-repudiation</a>,
-<a href="https://keybase.io/docs/kbfs">frictionless sharing of files</a>, and so forth. But that&rsquo;s the topic of
-another article. What I want to talk about here is how I got to the promised
-land.</p>
-<p>First up is <a href="https://keybase.io">Keybase</a>, which is a really awesome software
-stack that maps your identity to your public keys. You might want to
-<a href="https://keybase.io/docs/kbfs">read about</a> it. Go ahead, I&rsquo;ll wait.</p>
-<p>Signup is currently by invite only, but if you know <a href="https://keybase.io/adamgetchell">someone</a> already on it
-you might be able to wrangle an invite.</p>
-<p>When you do sign up, they&rsquo;ll ask for an email address. Of course, we all
-know that email is <a href="https://www.viget.com/articles/email-is-completely-insecure-by-default">notoriously insecure</a>, <a href="http://www.howtogeek.com/180604/htg-explains-why-is-spam-still-a-problem/">subject to spamming</a>,
-<a href="http://www.wired.com/2015/03/ugly-mail/">ad-analytics</a>, and any number of security maladies, but I didn&rsquo;t want to
-bow to that (seeming) inevitability.</p>
-<p>As it turns out, this was the perfect opportunity to use another highly secure
-service I&rsquo;d been playing with: <a href="https://protonmail.com">ProtonMail</a>.</p>
-<p>ProtonMail has encrypted identities in order to retrieve your data, is housed
-in Switzerland (so certain entities won&rsquo;t obtain access easily), is encrypted
-again with your own key which ProtonMail doesn&rsquo;t know so that they cannot
-access your data even if certain entities force them to hand it over, has mobile app versions, and implements all the right sorts of technologies to
-patch up the leaky sieve of general purpose electronic correspondence while
-still remaining useful to non-Sendmail-grognards.</p>
-<p>Now, if I&rsquo;m going to bother to have a vanity domain like <a href="https://adamgetchell.org">adamgetchell.org</a>,
-I may as well have an email address like adam@&hellip; So while the free version of
-<a href="https://protonmail.com">ProtonMail</a> is fine for tinkering, I stepped up to a paid account in order
-to get these and other features, as we&rsquo;ll go over shortly. For $48 per year,
-not too bad, and I felt good about supporting them.</p>
-<p>The next step towards greater email security is to verify you own your domain.</p>
-<p>My domain registrar is <a href="https://joker.com">Joker</a>, a fine German domain registrar also housed
-in Switzerland (seeing a theme?) that runs me about $12/year. ProtonMail
-provides a nice wizard to step you through everything, so from that:</p>
-<p><img src="/img/dns-verification.png" alt="DNS Verification"></p>
-<p>You go to your DNS registrar and add the requested TXT record.
-<a href="https://docs.menandmice.com/display/MM/How+to+test+DNSSEC+validation">Validate it</a>.</p>
-<p>Next, you&rsquo;ll need to add the MX record for your vanity domain, with the data
-that ProtonMail supplies. There&rsquo;s a pretty screenshot I could show, but data is
-rather trivial: set up an MX record, with a value of <code>mail.protonmail.ch</code> and a
-priority of <code>10</code>, and you&rsquo;re good to go. Give it some time to propagate through
-DNS-land; eat lunch, or have some coffee, or play your favorite game for a tick
-or two.</p>
-<p>Now you can just add the address in ProtonMail&rsquo;s Wizard (Settings-&gt;Domains)</p>
-<p><img src="/img/protonmail-vanity.png" alt="Setup address using your domain in ProtonMail"></p>
-<p>Alright, vanity email address, $\checkmark$. Now it&rsquo;s time to secure it.</p>
-<p>You don&rsquo;t want someone to be able to fake your brand new domain. This is where
-<a href="http://dnssec.net">DNSSEC</a> comes in. However, in my case, <a href="https://joker.com">Joker</a>&rsquo;s DNS servers don&rsquo;t
-support it. No problem &ndash; switch to someone who does!</p>
-<p>That someone is <a href="https://www.cloudflare.com">CloudFlare</a>.</p>
-<p>CloudFlare is a cool service that boosts your website speed via optimizations
-and CDNs, helps protect your website against some forms of malicious attacks,
-and can even mitigate DDoS.</p>
-<p>In this case, I&rsquo;m interested in them because they provide fast, secure DNS, and
-because I can get a free account for my single website. What&rsquo;s not to like?</p>
-<p>I also highly recommend them in general. I&rsquo;ve used them for a number of years
-professionally, and they&rsquo;ve been worth the cost.</p>
-<p>On Joker I can specify the CloudFlare will be my DNS server like so:</p>
-<p><img src="/img/cloudflare-dns.png" alt="CloudFlare DNS Settings on Joker"></p>
-<p>A helpful wizard will pop up telling you that you&rsquo;re about to transfer records
-over, which you should do. (Actually, I turned on DNSSEC much later in the
-process than what I&rsquo;m writing here. Thus, most of my DNS changes were actually
-made on Joker&rsquo;s DNS servers, then migrated over to CloudFlare. That worked just
-fine.)</p>
-<p>Once you&rsquo;ve verified that CloudFlare is now handling your DNS, it&rsquo;s a simple
-matter to switch on DNSSEC:</p>
-<p><img src="/img/cloudflare-dnssec.png" alt="CloudFlare DNSSEC"></p>
-<p>Now, back to email! Just like we don&rsquo;t want someone to spoof our domain, we
-don&rsquo;t want to someone to spoof emails. Time for <a href="http://www.dkim.org">DKIM</a>, <a href="http://www.openspf.org">SPF</a>, and
-<a href="https://dmarc.org">DMARC</a>.</p>
-<p>ProtonMail has a fantastic guide to setting up <a href="https://protonmail.com/support/knowledge-base/anti-spoofing/">Anti-spoofing for Custom
-Domains</a>. Again, I&rsquo;ll wait while you read it.</p>
-<p>Whew! That was a long detour, but we finally have a secure email address to use
-for <a href="https://keybase.io/docs/kbfs">Keybase</a>.</p>
-<p><img src="/img/spamminess.png" alt="Email Spamminess"></p>
-<p>Once you&rsquo;ve installed Keybase (e.g. <code>brew cask install keybase</code>), you&rsquo;ll want to
-note down your &lsquo;paper&rsquo; key someplace safe (like, say, a Secure Note in
-<a href="https://1password.com">1Password</a>). And then, you&rsquo;ll want to start adding identities, such as
-Twitter, GitHub, Reddit, and your website.</p>
-<p>This is pretty straightforward; you sign objects with your public key and
-post them someplace public on that service (e.g. a tweet, gist, post, or static
-file).</p>
-<p>For example, here&rsquo;s my <a href="https://gist.github.com/acgetchell/7b68d1168a45859624d0cb3369931ace">GitHub proof</a>:</p>
-<p>The neat thing about Keybase is that you don&rsquo;t need a central server to verify
-someone&rsquo;s identity: you can do it yourself right from the command line:</p>
-<p><img src="/img/keybase-id-proof.png" alt="Keybase proof from CLI"></p>
-<p>Now, if you want your website to be part of your identity, you&rsquo;ll want it to be
-secure. My website happens to be generated by <a href="http://blog.getpelican.com">Pelican</a> and hosted on
-GitHub, for which I have 2-factor authentication turned on. But by default,
-<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">GitHub hosted sites only support SSL for <code>*.github.io</code> domains</a>.</p>
-<p><a href="https://www.cloudflare.com">CloudFlare</a> does, sorta. So we come to the second reason for
-using CloudFlare: enabling <code>https</code> on your static, custom domain. It&rsquo;s as easy
-as flicking a switch:</p>
-<p><img src="/img/github-ssl.png" alt="GitHub SSL"></p>
-<p><strong>HOWEVER</strong> this is not complete; it only encrypts communication between
-the client browser and CloudFlare. <a href="https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it">The connection between CloudFlare and
-GitHub is unencrypted for custom domains</a>. It is also easy to do <a href="https://thehackerblog.com/keeping-positive-obtaining-arbitrary-wildcard-ssl-certificates-from-comodo-via-dangling-markup-injection/index.html">the
-wrong way</a>.</p>
-<p>If you didn&rsquo;t have a custom domain, then this doesn&rsquo;t apply. But where&rsquo;s the
-fun in that?</p>
-<p>Finally, to prevent the client from downgrading from <code>https</code> to <code>http</code>, you can
-turn on HTTP Strict Transport Security <a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet">(HSTS)</a>.</p>
-<p><img src="/img/hsts.png" alt="HTTP Strict Transport Security on CloudFlare"></p>
-<p>This comes with some sizeable caveats, so definitely read them.</p>
-<p>At last, you can check your work here: <a href="https://en.internet.nl">https://en.internet.nl</a>.</p>
-<p>And now, finally, you have a <a href="https://keybase.io/docs/kbfs">nice, secure, publicly verifiable identity</a>:</p>
-<p><img src="/img/keybase.png" alt="Adam&amp;rsquo;s Keybase info"></p>
-<h2 id="update">Update</h2>
-<p>Here are two videos from CloudFlare on boosting site speed and security:</p>
-<ul>
-<li><a href="https://vimeo.com/157530322">Increase the speed of your site - CloudFlare Performance Tips</a></li>
-<li><a href="https://vimeo.com/162142298">User Privacy &amp; Data Integrity</a></li>
-</ul>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>As I&rsquo;ve mentioned earlier, I&rsquo;m writing some <a href="https://www.adamgetchell.org/CDT-plusplus/">scientific code</a> that needs to be accurate and fast.</p>
+<blockquote>
+<p>That is, some entity other than me should check for inevitable errors.</p>
+</blockquote>
+<p>So I started Test Driven Development using <a href="https://github.com/google/googletest">GoogleTest</a>. Then I saw Behavior Driven Development (<a href="https://cucumber.io/docs/gherkin/reference/">BDD</a>) and switched to <a href="https://github.com/catchorg/Catch2">Catch2</a>.</p>
+<blockquote>
+<p>This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests.</p>
+</blockquote>
+<p>That went well, but when I had a few folks look over the code, they noted the difficulty of getting the stack up and running<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<blockquote>
+<p>Also, <a href="https://gcc.gnu.org">gcc</a> started not being able to compile the project with tests enabled.</p>
+</blockquote>
+<p>So I looked around again, and found <a href="https://github.com/doctest/doctest">doctest</a>, which was based on <a href="https://github.com/catchorg/Catch2">Catch2</a> but offered <a href="https://github.com/doctest/doctest/blob/master/doc/markdown/benchmarks.md">much faster compile times</a> and the model of
+including tests right into the code (although I opted to keep them separate, for now). Around this time I&rsquo;d asked someone else to look at a few things in my project, so
+it seemed like a good time to try it out.</p>
+<p>Then Catch2 dropped the long awaited <a href="https://github.com/catchorg/Catch2/blob/devel/docs/release-notes.md#301">v3</a>, so &ndash;</p>
+<blockquote>
+<p>Yep, let&rsquo;s compare.</p>
+</blockquote>
+<p>It turns out that much of the migration work I did from <a href="https://github.com/catchorg/Catch2">Catch2</a> -&gt; <a href="https://github.com/doctest/doctest">doctest</a> was also necessary for Catch2 v2 -&gt; Catch2 v3.</p>
+<p>So now I have <a href="https://github.com/acgetchell/CDT-plusplus/tree/feature/doctest">features/doctest</a> and <a href="https://github.com/acgetchell/CDT-plusplus/tree/feature/catch2v3">features/catch2v3</a> for side-by-side comparison.</p>
+<p>Right away, I noticed that <a href="https://releases.llvm.org/13.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html">clang-tidy</a> does not like <a href="https://github.com/doctest/doctest">doctest</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adam@hapkido ~ $ clang-tidy --version
+</span></span><span style="display:flex;"><span>Homebrew LLVM version 13.0.1
+</span></span><span style="display:flex;"><span>  Optimized build.
+</span></span><span style="display:flex;"><span>  Default target: arm64-apple-darwin21.5.0
+</span></span><span style="display:flex;"><span>  Host CPU: cyclone
+</span></span></code></pre></div><p>(<em>Full output <a href="https://gist.github.com/acgetchell/b1931e063ddfde033dd5702ee42d632f#file-doctest-clang-tidy">here</a>:</em>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adam@hapkido ~/projects/CDT-plusplus <span style="color:#f92672">(</span>develop<span style="color:#f92672">)</span> $ git checkout feature/doctest
+</span></span><span style="display:flex;"><span>Switched to branch <span style="color:#e6db74">&#39;feature/doctest&#39;</span>
+</span></span><span style="display:flex;"><span>Your branch is up to date with <span style="color:#e6db74">&#39;origin/feature/doctest&#39;</span>.
+</span></span><span style="display:flex;"><span>adam@hapkido ~/projects/CDT-plusplus <span style="color:#f92672">(</span>feature/doctest<span style="color:#f92672">)</span> $ cd scripts/
+</span></span><span style="display:flex;"><span>adam@hapkido ~/projects/CDT-plusplus/scripts <span style="color:#f92672">(</span>feature/doctest<span style="color:#f92672">)</span> $ ./clang-tidy.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... elided ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>-- Build files have been written to: /Users/adam/projects/CDT-plusplus/build
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2/26<span style="color:#f92672">]</span> Building CXX object tests/CMakeFiles/CDT_test.dir/Settings_test.cpp.o
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/tests/Settings_test.cpp:19:1: warning: initialization of <span style="color:#e6db74">&#39;DOCTEST_ANON_VAR_3&#39;</span> with static storage duration may throw an exception that cannot be caught <span style="color:#f92672">[</span>cert-err58-cpp<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>SCENARIO<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Check settings&#34;</span> * doctest::may_fail<span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>^
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:2800:24: note: expanded from macro <span style="color:#e6db74">&#39;SCENARIO&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define SCENARIO(name) DOCTEST_SCENARIO(name)</span>
+</span></span><span style="display:flex;"><span>                       ^
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:2716:32: note: expanded from macro <span style="color:#e6db74">&#39;DOCTEST_SCENARIO&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define DOCTEST_SCENARIO(name) DOCTEST_TEST_CASE(&#34;  Scenario: &#34; name)</span>
+</span></span><span style="display:flex;"><span>                               ^
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:2012:5: note: expanded from macro <span style="color:#e6db74">&#39;DOCTEST_TEST_CASE&#39;</span>
+</span></span><span style="display:flex;"><span>    DOCTEST_CREATE_AND_REGISTER_FUNCTION<span style="color:#f92672">(</span>DOCTEST_ANONYMOUS<span style="color:#f92672">(</span>DOCTEST_ANON_FUNC_<span style="color:#f92672">)</span>, decorators<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    ^
+</span></span><span style="display:flex;"><span>note: <span style="color:#f92672">(</span>skipping <span style="color:#ae81ff">3</span> expansions in backtrace; use -fmacro-backtrace-limit<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> to see all<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:365:29: note: expanded from macro <span style="color:#e6db74">&#39;DOCTEST_CAT&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define DOCTEST_CAT(s1, s2) DOCTEST_CAT_IMPL(s1, s2)</span>
+</span></span><span style="display:flex;"><span>                            ^
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:364:34: note: expanded from macro <span style="color:#e6db74">&#39;DOCTEST_CAT_IMPL&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define DOCTEST_CAT_IMPL(s1, s2) s1##s2</span>
+</span></span><span style="display:flex;"><span>                                 ^
+</span></span><span style="display:flex;"><span>note: expanded from here
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:1438:9: note: possibly throwing constructor declared here
+</span></span><span style="display:flex;"><span>        TestCase<span style="color:#f92672">(</span>funcType test, const char* file, unsigned line, const TestSuite&amp; test_suite,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... etc ...
+</span></span></code></pre></div><p>However, it does swimmingly with <a href="https://pvs-studio.com/en/">PVS-Studio</a>:</p>
+<p><a href="/html/index-doctest.html">Results</a></p>
+<p>Now, let&rsquo;s switch to the <a href="https://github.com/acgetchell/CDT-plusplus/tree/feature/catch2v3">features/catch2v3</a> branch:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adam@hapkido ~/projects/CDT-plusplus <span style="color:#f92672">(</span>feature/doctest<span style="color:#f92672">)</span> $ git checkout feature/catch2v3
+</span></span><span style="display:flex;"><span>Switched to branch <span style="color:#e6db74">&#39;feature/catch2v3&#39;</span>
+</span></span><span style="display:flex;"><span>Your branch is up to date with <span style="color:#e6db74">&#39;origin/feature/catch2v3&#39;</span>.
+</span></span></code></pre></div><p>And run clang-tidy:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>... elided ...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>13/26<span style="color:#f92672">]</span> Building CXX object tests/CMakeFiles/CDT_test.dir/Manifold_test.cpp.o
+</span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/tests/Manifold_test.cpp:179:9: warning: <span style="color:#e6db74">&#39;const auto manifold_type&#39;</span> can be declared as <span style="color:#e6db74">&#39;const auto *const manifold_type&#39;</span> <span style="color:#f92672">[</span>readability-qualified-auto<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>        auto const  manifold_type <span style="color:#f92672">=</span> typeid<span style="color:#f92672">(</span>manifold.get_triangulation<span style="color:#f92672">())</span>.name<span style="color:#f92672">()</span>;
+</span></span><span style="display:flex;"><span>        ^~~~~~~~~~
+</span></span><span style="display:flex;"><span>        const auto *const 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... etc ...
+</span></span></code></pre></div><p>It&rsquo;s pretty much clear of anything <a href="https://github.com/catchorg/Catch2">Catch2</a>-related.</p>
+<p>However, the <a href="https://pvs-studio.com/en/">PVS-Studio</a> output is tragic.</p>
+<p><a href="/html/index-catch2.html">Results</a></p>
+<p>Recall, these are the exact same tests!</p>
+<p>So, which one should I use going forward?</p>
+<p><a href="https://twitter.com/adamgetchell/status/1528422610261798913?s=20&amp;t=0jqURIb_nIZWKbV6vzy3KA">Twitter poll</a></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The project uses <a href="https://www.cgal.org">CGAL</a> which uses <a href="https://www.boost.org">Boost</a> and <a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen</a>, those dependencies alone account for over a hundred libraries. You absolutely need
+a package manager like <a href="https://vcpkg.io/en/index.html">vcpkg</a> to handle it sanely.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 <ul class="pa0">
   
 </ul>
