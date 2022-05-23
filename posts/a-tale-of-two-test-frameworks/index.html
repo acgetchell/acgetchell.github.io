@@ -281,7 +281,7 @@ it seemed like a good time to try it out.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adam@hapkido ~/projects/CDT-plusplus <span style="color:#f92672">(</span>feature/doctest<span style="color:#f92672">)</span> $ git checkout feature/catch2v3
 </span></span><span style="display:flex;"><span>Switched to branch <span style="color:#e6db74">&#39;feature/catch2v3&#39;</span>
 </span></span><span style="display:flex;"><span>Your branch is up to date with <span style="color:#e6db74">&#39;origin/feature/catch2v3&#39;</span>.
-</span></span></code></pre></div><p>And run clang-tidy:</p>
+</span></span></code></pre></div><p>And run <a href="https://releases.llvm.org/13.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html">clang-tidy</a>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>... elided ...
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>13/26<span style="color:#f92672">]</span> Building CXX object tests/CMakeFiles/CDT_test.dir/Manifold_test.cpp.o
 </span></span><span style="display:flex;"><span>/Users/adam/projects/CDT-plusplus/tests/Manifold_test.cpp:179:9: warning: <span style="color:#e6db74">&#39;const auto manifold_type&#39;</span> can be declared as <span style="color:#e6db74">&#39;const auto *const manifold_type&#39;</span> <span style="color:#f92672">[</span>readability-qualified-auto<span style="color:#f92672">]</span>
@@ -296,12 +296,12 @@ it seemed like a good time to try it out.</p>
 <p>Recall, these are the exact same tests!</p>
 <p>So, which one should I use going forward?</p>
 <p><a href="https://twitter.com/adamgetchell/status/1528791092748906496">Twitter Poll</a></p>
-<p>N.B. If you&rsquo;re curious, you can play around with this yourself via Docker:</p>
+<p>N.B. If you&rsquo;re curious, you can play around with this yourself via <a href="https://www.docker.com">Docker</a>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull acgetchell/cdt-plusplus
 </span></span><span style="display:flex;"><span>docker run -it --name cdt acgetchell/cdt-plusplus
 </span></span></code></pre></div><p>From there, checkout <code>feature/catch2v3</code> or <code>feature/doctest</code>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p>Running <code>scripts/fast-build.sh</code> (i.e. no tests) will work, but compiling/running tests with <code>scripts/build.sh</code> fails.
-If you know why, pull requests are welcome!</p>
+If you know why, <a href="https://github.com/acgetchell/CDT-plusplus/pulls">pull requests</a> are welcome!</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
