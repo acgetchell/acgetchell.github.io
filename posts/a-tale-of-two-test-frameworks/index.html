@@ -57,7 +57,7 @@
  So I started Test Driven Development using GoogleTest. Then I saw Behavior Driven Development (BDD) and switched to Catch2.
  This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests."><meta itemprop="datePublished" content="2022-05-20T12:57:43-07:00" />
 <meta itemprop="dateModified" content="2022-05-20T12:57:43-07:00" />
-<meta itemprop="wordCount" content="573">
+<meta itemprop="wordCount" content="608">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="A Tale of Two Test Frameworks"/>
 <meta name="twitter:description" content="As I&rsquo;ve mentioned earlier, I&rsquo;m writing some scientific code that needs to be accurate and fast.
@@ -210,7 +210,7 @@
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 573 words </span>
+        <span class="f6 mv4 dib tracked"> - 608 words </span>
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>As I&rsquo;ve mentioned earlier, I&rsquo;m writing some <a href="https://www.adamgetchell.org/CDT-plusplus/">scientific code</a> that needs to be accurate and fast.</p>
@@ -223,7 +223,7 @@
 </blockquote>
 <p>That went well, but when I had a few folks look over the code, they noted the difficulty of getting the stack up and running<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <blockquote>
-<p>Also, <a href="https://gcc.gnu.org">gcc</a> started not being able to compile the project with tests enabled.</p>
+<p>Also, <a href="https://gcc.gnu.org">gcc</a> started not being able to compile the project with tests enabled, which you can check by running on Docker, as given below.</p>
 </blockquote>
 <p>So I looked around again, and found <a href="https://github.com/doctest/doctest">doctest</a>, which was based on <a href="https://github.com/catchorg/Catch2">Catch2</a> but offered <a href="https://github.com/doctest/doctest/blob/master/doc/markdown/benchmarks.md">much faster compile times</a> and the model of
 including tests right into the code (although I opted to keep them separate, for now). Around this time I&rsquo;d asked someone else to look at a few things in my project, so
@@ -295,14 +295,13 @@ it seemed like a good time to try it out.</p>
 <p><a href="/html/index-catch2.html">Results</a></p>
 <p>Recall, these are the exact same tests!</p>
 <p>So, which one should I use going forward?</p>
-<blockquote>
-<p>If you&rsquo;re curious, you can play around with this yourself via Docker:</p>
-</blockquote>
+<p><a href="https://twitter.com/adamgetchell/status/1528791092748906496">Twitter Poll</a></p>
+<p>N.B. If you&rsquo;re curious, you can play around with this yourself via Docker:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull acgetchell/cdt-plusplus
 </span></span><span style="display:flex;"><span>docker run -it --name cdt acgetchell/cdt-plusplus
-</span></span></code></pre></div><blockquote>
-<p>From there, checkout <code>feature/catch2v3</code> or <code>feature/doctest</code>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-</blockquote>
+</span></span></code></pre></div><p>From there, checkout <code>feature/catch2v3</code> or <code>feature/doctest</code>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Running <code>scripts/fast-build.sh</code> (i.e. no tests) will work, but compiling/running tests with <code>scripts/build.sh</code> fails.
+If you know why, pull requests are welcome!</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
