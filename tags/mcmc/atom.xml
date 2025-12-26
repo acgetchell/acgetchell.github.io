@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Adam&#x27;s Entropy - mcmc</title>
+    <subtitle>One particular random walk through life.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://www.adamgetchell.org/tags/mcmc/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.adamgetchell.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2020-01-30T00:39:09-08:00</updated>
+    <id>https://www.adamgetchell.org/tags/mcmc/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Designing a Metropolis Class</title>
+        <published>2020-01-30T00:39:09-08:00</published>
+        <updated>2020-01-30T00:39:09-08:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.adamgetchell.org/posts/designing-a-metropolis-class/"/>
+        <id>https://www.adamgetchell.org/posts/designing-a-metropolis-class/</id>
+        
+        <content type="html" xml:base="https://www.adamgetchell.org/posts/designing-a-metropolis-class/">&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;hep-th&#x2F;0105267&quot;&gt;Causal Dynamical Triangulations&lt;&#x2F;a&gt; computes the path integral of the
+quantum universe numerically.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;$$I_{EH}=\int\mathcal{D}[g(M)]e^{iS_{EH}} \rightarrow  \sum \frac{1}{C_t}e^{-S_{R}}$$&lt;&#x2F;p&gt;
+&lt;p&gt;Where $S_{EH}$ is the Einstein-Hilbert action:&lt;&#x2F;p&gt;
+&lt;p&gt;$$S_{EH}=\int \left[\frac{1}{2\kappa}(R-2\Lambda)+\mathcal{L}_{M}\right]\sqrt{-g}d^4x$$&lt;&#x2F;p&gt;
+&lt;p&gt;And $S_{R}$ is the Regge action:&lt;&#x2F;p&gt;
+&lt;p&gt;$$S_{R}=\frac{1}{8\pi G}
+\left[\sum_{hinges}A_i\delta_i+\Lambda\sum_{simplices}V_i\right]$$&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is a path integral and why would I want to compute it?&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Good question! A reasonable answer will take us a bit far afield, and is the
+subject of another (&lt;em&gt;pending&lt;&#x2F;em&gt;) post. For the sake of argument, let&#x27;s proceed on
+the assumption that it&#x27;s something we want to compute.&lt;&#x2F;p&gt;
+&lt;p&gt;To do this we use the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;grokipedia.com&#x2F;page&#x2F;Metropolis%E2%80%93Hastings_algorithm&quot;&gt;Metropolis-Hastings&lt;&#x2F;a&gt; algorithm, which is a
+member of a more general class of algorithms known as
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Markov_chain_Monte_Carlo&quot;&gt;Markov Chain Monte Carlo (MCMC)&lt;&#x2F;a&gt; methods, in particular random walk
+Monte Carlo methods.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Is this another long digression?&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Probably.&lt;&#x2F;p&gt;
+&lt;p&gt;Anyways, to have good results, we need to calculate something, in this case
+perturbations of that universe via &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;pii&#x2F;055032139290012Z&quot;&gt;ergodic moves&lt;&#x2F;a&gt;, performed millions of
+times per simulation accurately.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The simulated universe in general is an n-dimensional
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Delaunay_triangulation&quot;&gt;Delaunay Triangulation&lt;&#x2F;a&gt;, which is a good&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#5&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; discretized n-dimensional
+manifold, which allows us to do &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Regge_calculus&quot;&gt;Regge calculus&lt;&#x2F;a&gt;, or
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.1007&#x2F;BF02733251&quot;&gt;&quot;General Relativity without Coordinates&quot;&lt;&#x2F;a&gt;, conducted on said
+triangulations.&lt;&#x2F;p&gt;
+&lt;p&gt;Here is what these ergodic moves look like in 3D. By choosing to make these
+moves according to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;grokipedia.com&#x2F;page&#x2F;Metropolis%E2%80%93Hastings_algorithm&quot;&gt;Metropolis-Hastings&lt;&#x2F;a&gt; algorithm, we effectively sample
+all possible paths as the universe moves from one time step to the next.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Which is what the path integral is?&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Exactly.&lt;&#x2F;p&gt;
+&lt;p&gt;So, these are the moves which sample all possible (2+1) dimensional
+discretized universes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;23move.png&quot; alt=&quot;(2,3) move&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;img&#x2F;26move.png&quot; alt=&quot;(2,6) move&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;img&#x2F;44move.png&quot; alt=&quot;(4,4) move&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;So how do we use these moves?&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;First, let&#x27;s start by generating a random, foliated triangulation with $n$
+simplices and $t$ timeslices. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;acgetchell&#x2F;CDT-plusplus&#x2F;blob&#x2F;develop&#x2F;src&#x2F;initialize.cpp&quot;&gt;Here is a program to do that&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;A foliated triangulation is a Delaunay triangulation with two criteria:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Each vertex has a time value&lt;&#x2F;li&gt;
+&lt;li&gt;Each simplex contains vertices that differ by at most one time value&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;In (2+1) dimensions, then, we are dealing with simplices that have 4 vertices
+(&lt;em&gt;an n-dimensional simplex always has n+1 vertices&lt;&#x2F;em&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;We can thus classify the
+(2+1) dimensional simplex as a (3,1) simplex (&lt;em&gt;3 vertices on the low timeslice
+and one vertex on the high timeslice&lt;&#x2F;em&gt;), a (2,2) simplex, or a (1,3) simplex.&lt;&#x2F;p&gt;
+&lt;p&gt;Likewise, we can name the moves similarly.&lt;&#x2F;p&gt;
+&lt;p&gt;The top move takes a (3,1) simplex and a (2,2) simplex and converts it to a
+(3,1) simplex plus two (2,2) simplices. This is called a (2,3) move, and its
+reverse is naturally a (3,2) move.&lt;&#x2F;p&gt;
+&lt;p&gt;The middle move takes a (1,3) simplex and a (3,1) simplex and converts it to
+three (1,3) simplices plus three (3,1) simplices. This is a (2,6) move along
+with the reverse (6,2) move.&lt;&#x2F;p&gt;
+&lt;p&gt;The bottom move takes two (1,3) simplices and two (3,1) simplices and makes
+different (1,3) and (3,1) simplices. This is called a (4,4) move, and it is
+its own reverse.&lt;&#x2F;p&gt;
+&lt;p&gt;The CDT action is then based on the Regge action:&lt;&#x2F;p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+S^{(3)} &amp;amp;= 2\pi k\sqrt{\alpha}N_1^{TL} + N_3^{(3,1)}\left[
+-3k\operatorname{arcsinh}\left(\frac{1}{\sqrt{3}\sqrt{4\alpha+1}}\right)
+-3k\sqrt{\alpha}\operatorname{arccos}\left(\frac{2\alpha+1}{4\alpha+1}\right)
+-\frac{\lambda}{12}\sqrt{3\alpha+1}\right] \
+&amp;amp;\quad + N_3^{(2,2)}\left[
+2k\operatorname{arcsinh}\left(\frac{2\sqrt{4\alpha+2}}{4\alpha+1}\right)
+-4k\sqrt{\alpha}\operatorname{arccos}\left(-\frac{1}{4\alpha+1}\right)
+-\frac{\lambda}{12}\sqrt{4\alpha+2}\right]
+\end{aligned}
+$$&lt;&#x2F;p&gt;
+&lt;p&gt;This formula is the Regge action with some trigonometric identities applied
+after taking the length of spacelike edges to be 1 and the length of timelike
+edges to be $\alpha$. There are a few more constants thrown in for good
+measure.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;However complex this looks, it generates a number.&lt;&#x2F;p&gt;
+&lt;p&gt;Metropolis-Hastings then calculates the probability of making a move as:&lt;&#x2F;p&gt;
+&lt;p&gt;$$ P=a_{1}a_{2}$$&lt;&#x2F;p&gt;
+&lt;p&gt;Where:&lt;&#x2F;p&gt;
+&lt;p&gt;$$ a_{1}=\frac{\text{move}[i]}{\sum_i\text{move}[i]} $$&lt;&#x2F;p&gt;
+&lt;p&gt;And:&lt;&#x2F;p&gt;
+&lt;p&gt;$$ a_{2}=e^{\Delta S} $$&lt;&#x2F;p&gt;
+&lt;p&gt;$a_{1}$ is essentially the probability of making $\text{move}[i]$ versus
+making all other moves, and $a_{2}$ is the change in the action caused by
+making $\text{move}[i]$.&lt;&#x2F;p&gt;
+&lt;p&gt;This comes from the fact that we are using Markov chains, which forget all
+history except the previous move,&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#6&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; and the principle of detailed balance,
+which states that the probability of transitioning from $x\rightarrow x\prime$
+equals the probability of $x\prime\rightarrow x$.&lt;&#x2F;p&gt;
+&lt;p&gt;$a_{1}$ is easy to calculate: you just keep track of the total successful
+moves of each type.&lt;&#x2F;p&gt;
+&lt;p&gt;$a_{2}$ is likewise simple:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A (2,3) move will change
+$N_1^{TL}$ and $N_3^{(2,2)}$ by +1 each; a (3,2) by -1 each.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;A (2,6) move changes $N_3^{(3,1)}$ by +4 and $N_1^{TL}$ by +2; a (6,2)
+by -4 and -2 respectively.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;A (4,4) move doesn&#x27;t change the action at all; $a_2 = 1$, and only $a_1$ is
+needed.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;By attempting a large number of moves, some of which will be accepted&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#7&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; and
+some of which will be rejected, we can approximate the distribution thus
+producing an &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.m.wikipedia.org&#x2F;wiki&#x2F;Statistical_ensemble_(mathematical_physics)&quot;&gt;ensemble&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Now what?&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Now we can collect data on the various ensembles, and obtain things like
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;hep-th&#x2F;0505113&quot;&gt;spectral dimension&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1305.2932&quot;&gt;transition amplitudes&lt;&#x2F;a&gt;, or in my case, the
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.slideshare.net&#x2F;acgetchell&#x2F;aps-48348528&quot;&gt;Newtonian Limit&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;So that&#x27;s the backstory (&lt;em&gt;modulo some digressions&lt;&#x2F;em&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;To have results before, well, the end of the universe, we should use a fast
+language, e.g. C++ together with a battle-tested library capable of manipulating
+Delaunay triangulations in various dimensions, e.g. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;CGAL&#x2F;cgal&quot;&gt;CGAL&lt;&#x2F;a&gt;.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#4&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Of course, that isn&#x27;t enough, we have to write good code too. Thinking about
+the problem statement (that we&#x27;ve spent most of this post on) conjures up
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Design_Patterns&quot;&gt;GoF&lt;&#x2F;a&gt; patterns such as the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;sourcemaking.com&#x2F;design_patterns&#x2F;command&#x2F;cpp&#x2F;2&quot;&gt;Command Pattern&lt;&#x2F;a&gt;, the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;sourcemaking.com&#x2F;design_patterns&#x2F;strategy&quot;&gt;Strategy Pattern&lt;&#x2F;a&gt;, plus the
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Producer%E2%80%93consumer_problem&quot;&gt;Producer-consumer&lt;&#x2F;a&gt; problem.&lt;&#x2F;p&gt;
+&lt;p&gt;All which seem to have well tested, elegant solutions.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;But isn&#x27;t &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.manning.com&#x2F;books&#x2F;functional-programming-in-c-plus-plus&quot;&gt;functional programming&lt;&#x2F;a&gt; the old&#x2F;new hotness?&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;We&#x27;ll get into that next time!&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You didn&#x27;t actually address the title of this post.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;I do need to sleep sometime.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Fair enough.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;A &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wick_rotation&quot;&gt;Wick rotation&lt;&#x2F;a&gt; converts the factor of $i$ in the continuous path
+integral to a minus sign in the discrete path integral. In the Einstein-Hilbert
+action we keep $\Lambda$, the Cosmological constant, but ignore
+$\mathcal{L}_{M}$,
+the matter &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lagrangian_(field_theory)&quot;&gt;Lagrangian&lt;&#x2F;a&gt; density. In the Regge action, we are essentially
+summing areas times angles for the first term plus volumes times the
+Cosmological constant in the second term.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;Or at least, enough times for the ensembles to &quot;thermalize&quot; into
+representative distributions on which we can accurately sample the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Posterior_probability&quot;&gt;posterior&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;3&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;4&lt;&#x2F;sup&gt;
+&lt;p&gt;$N_{1}^{TL}$ is the number of timelike links connecting vertices on
+different time slices. $N_3^{(3,1)}$ is the number of (3,1) and (1,3) simplices.
+$N_{3}^{(2,2)}$ is the number of (2,2) simplices. $k=\frac{1}{8\pi G_N}$, where
+$G_N$ is Newton&#x27;s constant. $\lambda=k*\Lambda$, where $\Lambda$ is the
+Cosmological constant. See? All numbers.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;4&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;7&lt;&#x2F;sup&gt;
+&lt;p&gt;I first attempted to do this from scratch in &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;common-lisp.net&#x2F;project&#x2F;slime&#x2F;&quot;&gt;Lisp&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;clojure.org&quot;&gt;Clojure&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;fsharp.org&quot;&gt;F#&lt;&#x2F;a&gt;,
+and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.python.org&quot;&gt;Python&lt;&#x2F;a&gt;. I quickly came to the realization that implementing [Delaunay
+Triangulations][5] and the necessary operations was several PhDs worth
+of research in its own right (&lt;em&gt;which, in fact, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;CGAL&#x2F;cgal&quot;&gt;CGAL&lt;&#x2F;a&gt; is&lt;&#x2F;em&gt;). The choice of &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;CGAL&#x2F;cgal&quot;&gt;CGAL&lt;&#x2F;a&gt;
+influenced the choice of language; &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.python.org&quot;&gt;Python&lt;&#x2F;a&gt; almost worked, but the
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;CGAL&#x2F;cgal-swig-bindings&quot;&gt;SWIG Python bindings&lt;&#x2F;a&gt; weren&#x27;t up to the task at the time. (&lt;em&gt;They still lack
+access to the new dD Triangulation package, which I will need for (3+1)D
+path integrals.&lt;&#x2F;em&gt;)&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;5&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
+&lt;p&gt;Good here means that the tools of differential geometry used on manifolds
+in General Relativity have analogs in piecewise simplicial discrete
+triangulations, i.e., triangulations are equivalent to manifolds.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;6&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;5&lt;&#x2F;sup&gt;
+&lt;p&gt;It would be almost hopelessly complex if we had to consider the entire
+history of the universe to advance a single timestep!&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;7&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;6&lt;&#x2F;sup&gt;
+&lt;p&gt;Alas, it isn&#x27;t quite this simple because Metropolis-Hastings behaves
+badly (&lt;em&gt;gets stuck&lt;&#x2F;em&gt;) if the acceptance ratio of moves is below ~25%.
+Alternatives are needed if this is the case, which, for sufficiently large
+triangulations, indeed occurs.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+</feed>

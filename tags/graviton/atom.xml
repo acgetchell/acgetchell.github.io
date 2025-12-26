@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Adam&#x27;s Entropy - graviton</title>
+    <subtitle>One particular random walk through life.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://www.adamgetchell.org/tags/graviton/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.adamgetchell.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2011-12-28T17:51:16-08:00</updated>
+    <id>https://www.adamgetchell.org/tags/graviton/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Can LIGO Detect A Graviton?</title>
+        <published>2011-12-28T17:51:16-08:00</published>
+        <updated>2011-12-28T17:51:16-08:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.adamgetchell.org/posts/can-ligo-detect-graviton/"/>
+        <id>https://www.adamgetchell.org/posts/can-ligo-detect-graviton/</id>
+        
+        <content type="html" xml:base="https://www.adamgetchell.org/posts/can-ligo-detect-graviton/">&lt;p&gt;&lt;em&gt;A lecture given 10&#x2F;27&#x2F;08 by Professor Freeman Dyson of the Institute of
+Advanced Studies at Princeton, in honor of the 100th anniversary of the
+founding of the University of California, Davis.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;$$E=\left(\frac{c^{2}}{32\pi G}\right)\omega^{2}f^{2}$$
+is the energy per gravity wave, where f is the dimensionless
+amplitude&#x2F;strain.&lt;&#x2F;p&gt;
+&lt;p&gt;$$E_{s}=\frac{\hbar\omega^{4}}{c^{3}}$$
+is the energy per graviton, taken from $\hbar\omega$ energy times
+$\frac{\omega^3}{c^3}$ density&lt;&#x2F;p&gt;
+&lt;p&gt;$$f=\left(32\pi\right)^{\frac{1}{2}}\left(L_{p}\frac{\omega}{c}\right)$$
+is the strain per graviton.&lt;&#x2F;p&gt;
+&lt;p&gt;$$L_{p}=\left(\frac{G\hbar}{c^{3}}\right)^{\frac{1}{2}}=1.4\times10^{-33}cm$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$\delta=\left(32\pi\right)^{\frac{1}{2}}L_{p}$$
+Gives the linear displacement per graviton.&lt;&#x2F;p&gt;
+&lt;p&gt;Note that spherical objects can&#x27;t radiate gravitational waves, and that
+binary stars produce kilohertz gravity waves.&lt;&#x2F;p&gt;
+&lt;p&gt;LIGO&#x27;s threshold is therefore $10^{37}$ gravitons.&lt;&#x2F;p&gt;
+&lt;p&gt;$$M\delta^{2}\geq\hbar T$$
+is the uncertainty in position and velocity.&lt;&#x2F;p&gt;
+&lt;p&gt;$$D\leq\left(\frac{GM}{c^{2}}\right)$$
+(from combining previous two equations)&lt;&#x2F;p&gt;
+&lt;p&gt;$$\delta^{2}\geq\frac{\hbar D}{M_{s}}$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$\frac{GM}{c^{2}}\geq\left(\frac{c}{s}D\right)&amp;gt;D$$
+Which exceeds the Schwarzschild radius, so impossible.&lt;&#x2F;p&gt;
+&lt;p&gt;Then the Bohr-Rosenfeld argument is:&lt;br &#x2F;&gt;
+$$\Delta E_{x}(1)\Delta E_{x}(2)\approx\hbar\left|A(1,2)-A(2,1)\right|$$
+where A(2,1) is the field from dipole 2 at location 1.&lt;&#x2F;p&gt;
+&lt;p&gt;The detector is described by:&lt;br &#x2F;&gt;
+$$D_{ab}=m\int\Psi_{b}^{*}xy\Psi_{a}d\tau$$
+where a is the initial state, b is the final state, and m is the detector mass.&lt;&#x2F;p&gt;
+&lt;p&gt;$$\sigma(\omega)=\left(4\pi^{2}G\frac{\omega^{3}}{c^{3}}\right)\sum_{b}\left|D_{ab}\right|^{2}\delta(E_{b}-E_{a}-\hbar\omega)$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$S_{a}=\int\sigma(\omega)\frac{d\omega}{\omega}$$
+is the logarithmic average taken over the graviton cross section.&lt;&#x2F;p&gt;
+&lt;p&gt;$$S_{a}=4\pi^{2}L_{p}^{2}Q$$&lt;&#x2F;p&gt;
+&lt;p&gt;Now consider the gravitophotoelectric effect, where the graviton removes
+an electron.&lt;&#x2F;p&gt;
+&lt;p&gt;$$Q=\int\left|\left(x\frac{\partial}{\partial
+y}+y\frac{\partial}{\partial
+x}\right)\Psi_{a}\right|^{2}d\tau$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$Q=\frac{\int\bar{r}^{4}\left[f&#x27;(r)\right]^{2}d\bar{r}}{\int
+r^{2}\left[f(r)\right]^{2}dr}$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$\int
+r^{4}\left[f&#x27;+\left(\frac{3}{2}r\right)f\right]^{2}dr&amp;gt;0$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$Q&amp;gt;\frac{3}{4}$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$f(r)=r^{-n}e^{-\frac{r}{R}}$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$Q=1-\frac{n}{6}$$&lt;&#x2F;p&gt;
+&lt;p&gt;$$4\pi^{2}L_{p}^{2}=4\pi^{2}G\frac{\hbar}{c^{3}}=8\times10^{-65}cm^{2}$$&lt;&#x2F;p&gt;
+&lt;p&gt;This means that if you take a detector the mass of the Earth, squash it
+into a large flat sheet, and run it for the lifetime of the universe,
+you&#x27;ll detect 4 gravitons.&lt;&#x2F;p&gt;
+&lt;p&gt;From the Sun, there are $10^{8}$W of gravitons and $10^{25}$W of
+neutrinos, and we can detect gravitons about $10^{-35}$ less than
+neutrinos.&lt;&#x2F;p&gt;
+&lt;p&gt;Special thanks to &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;katex.org&quot;&gt;KaTeX&lt;&#x2F;a&gt; for rendering the math on this site.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;N.B. There were good follow-up posts on the now-defunct Cosmic Variance blog (formerly at Discover Magazine) that provided background information on gravitational waves, including &quot;Catching the Waves&quot; (2009) and &quot;The Difficult Childhood of Gravitational Waves&quot; (2007).&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;This site is built with &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.getzola.org&quot;&gt;Zola&lt;&#x2F;a&gt; (theme: DeepThought) and uses &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;katex.org&quot;&gt;KaTeX&lt;&#x2F;a&gt; auto-render for &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.latex-project.org&quot;&gt;LaTeX&lt;&#x2F;a&gt;-style math.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+</feed>

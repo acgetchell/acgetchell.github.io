@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Adam&#x27;s Entropy - protonmail</title>
+    <subtitle>One particular random walk through life.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://www.adamgetchell.org/tags/protonmail/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.adamgetchell.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2016-08-15T00:00:00+00:00</updated>
+    <id>https://www.adamgetchell.org/tags/protonmail/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Secure, Verifiable, Public Identity</title>
+        <published>2016-08-12T00:00:00+00:00</published>
+        <updated>2016-08-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.adamgetchell.org/posts/2016-08-11-public-identity/"/>
+        <id>https://www.adamgetchell.org/posts/2016-08-11-public-identity/</id>
+        
+        <content type="html" xml:base="https://www.adamgetchell.org/posts/2016-08-11-public-identity/">&lt;p&gt;For awhile, I&#x27;ve been interested in establishing a secure, verifiable, public
+identity.&lt;&#x2F;p&gt;
+&lt;p&gt;There are &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&#x2F;blog&#x2F;2014-10-08&#x2F;the-horror-of-a-secure-golden-key&quot;&gt;any&lt;&#x2F;a&gt; &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.zdnet.com&#x2F;article&#x2F;microsoft-secure-boot-key-debacle-causes-security-panic&#x2F;&quot;&gt;number&lt;&#x2F;a&gt; of reasons to do this, for example,
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pDmj_xe7EIQ&quot;&gt;authenticity&lt;&#x2F;a&gt; and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;security.stackexchange.com&#x2F;questions&#x2F;6730&#x2F;what-is-the-difference-between-authenticity-and-non-repudiation&quot;&gt;non-repudiation&lt;&#x2F;a&gt;,
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&#x2F;docs&#x2F;kbfs&quot;&gt;frictionless sharing of files&lt;&#x2F;a&gt;, and so forth. But that&#x27;s the topic of
+another article. What I want to talk about here is how I got to the promised
+land.&lt;&#x2F;p&gt;
+&lt;p&gt;First up is &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&quot;&gt;Keybase&lt;&#x2F;a&gt;, which is a really awesome software
+stack that maps your identity to your public keys. You might want to
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&#x2F;docs&#x2F;kbfs&quot;&gt;read about&lt;&#x2F;a&gt; it. Go ahead, I&#x27;ll wait.&lt;&#x2F;p&gt;
+&lt;p&gt;Signup is currently by invite only, but if you know &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&#x2F;adamgetchell&quot;&gt;someone&lt;&#x2F;a&gt; already on it
+you might be able to wrangle an invite.&lt;&#x2F;p&gt;
+&lt;p&gt;When you do sign up, they&#x27;ll ask for an email address. Of course, we all
+know that email is &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.viget.com&#x2F;articles&#x2F;email-is-completely-insecure-by-default&quot;&gt;notoriously insecure&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.howtogeek.com&#x2F;180604&#x2F;htg-explains-why-is-spam-still-a-problem&#x2F;&quot;&gt;subject to spamming&lt;&#x2F;a&gt;,
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.wired.com&#x2F;2015&#x2F;03&#x2F;ugly-mail&#x2F;&quot;&gt;ad-analytics&lt;&#x2F;a&gt;, and any number of security maladies, but I didn&#x27;t want to
+bow to that (seeming) inevitability.&lt;&#x2F;p&gt;
+&lt;p&gt;As it turns out, this was the perfect opportunity to use another highly secure
+service I&#x27;d been playing with: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;proton.me&quot;&gt;ProtonMail&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;ProtonMail has encrypted identities in order to retrieve your data, is housed
+in Switzerland (so certain entities won&#x27;t obtain access easily), is encrypted
+again with your own key which ProtonMail doesn&#x27;t know so that they cannot
+access your data even if certain entities force them to hand it over, has mobile app versions, and implements all the right sorts of technologies to
+patch up the leaky sieve of general purpose electronic correspondence while
+still remaining useful to non-Sendmail-grognards.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, if I&#x27;m going to bother to have a vanity domain like &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;adamgetchell.org&quot;&gt;adamgetchell.org&lt;&#x2F;a&gt;,
+I may as well have an email address like adam@... So while the free version of
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;proton.me&quot;&gt;ProtonMail&lt;&#x2F;a&gt; is fine for tinkering, I stepped up to a paid account in order
+to get these and other features, as we&#x27;ll go over shortly. For $48 per year,
+not too bad, and I felt good about supporting them.&lt;&#x2F;p&gt;
+&lt;p&gt;The next step towards greater email security is to verify you own your domain.&lt;&#x2F;p&gt;
+&lt;p&gt;My domain registrar is &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;joker.com&quot;&gt;Joker&lt;&#x2F;a&gt;, a fine German domain registrar also housed
+in Switzerland (seeing a theme?) that runs me about $12&#x2F;year. ProtonMail
+provides a nice wizard to step you through everything, so from that:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;dns-verification.png&quot; alt=&quot;DNS Verification&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You go to your DNS registrar and add the requested TXT record.
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20190128075300&#x2F;https:&#x2F;&#x2F;docs.menandmice.com&#x2F;display&#x2F;MM&#x2F;How+to+test+DNSSEC+validation&quot;&gt;Validate it&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Next, you&#x27;ll need to add the MX record for your vanity domain, with the data
+that ProtonMail supplies. There&#x27;s a pretty screenshot I could show, but data is
+rather trivial: set up an MX record, with a value of &lt;code&gt;mail.protonmail.ch&lt;&#x2F;code&gt; and a
+priority of &lt;code&gt;10&lt;&#x2F;code&gt;, and you&#x27;re good to go. Give it some time to propagate through
+DNS-land; eat lunch, or have some coffee, or play your favorite game for a tick
+or two.&lt;&#x2F;p&gt;
+&lt;p&gt;Now you can just add the address in ProtonMail&#x27;s Wizard (Settings-&amp;gt;Domains)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;protonmail-vanity.png&quot; alt=&quot;Setup address using your domain in ProtonMail&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Alright, vanity email address, $\checkmark$. Now it&#x27;s time to secure it.&lt;&#x2F;p&gt;
+&lt;p&gt;You don&#x27;t want someone to be able to fake your brand new domain. This is where
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;grokipedia.com&#x2F;page&#x2F;Domain_Name_System_Security_Extensions&quot;&gt;DNSSEC&lt;&#x2F;a&gt; comes in. However, in my case, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;joker.com&quot;&gt;Joker&lt;&#x2F;a&gt;&#x27;s DNS servers don&#x27;t
+support it. No problem -- switch to someone who does!&lt;&#x2F;p&gt;
+&lt;p&gt;That someone is &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cloudflare.com&quot;&gt;CloudFlare&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;CloudFlare is a cool service that boosts your website speed via optimizations
+and CDNs, helps protect your website against some forms of malicious attacks,
+and can even mitigate DDoS.&lt;&#x2F;p&gt;
+&lt;p&gt;In this case, I&#x27;m interested in them because they provide fast, secure DNS, and
+because I can get a free account for my single website. What&#x27;s not to like?&lt;&#x2F;p&gt;
+&lt;p&gt;I also highly recommend them in general. I&#x27;ve used them for a number of years
+professionally, and they&#x27;ve been worth the cost.&lt;&#x2F;p&gt;
+&lt;p&gt;On Joker I can specify the CloudFlare will be my DNS server like so:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;cloudflare-dns.png&quot; alt=&quot;CloudFlare DNS Settings on Joker&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A helpful wizard will pop up telling you that you&#x27;re about to transfer records
+over, which you should do. (Actually, I turned on DNSSEC much later in the
+process than what I&#x27;m writing here. Thus, most of my DNS changes were actually
+made on Joker&#x27;s DNS servers, then migrated over to CloudFlare. That worked just
+fine.)&lt;&#x2F;p&gt;
+&lt;p&gt;Once you&#x27;ve verified that CloudFlare is now handling your DNS, it&#x27;s a simple
+matter to switch on DNSSEC:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;cloudflare-dnssec.png&quot; alt=&quot;CloudFlare DNSSEC&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now, back to email! Just like we don&#x27;t want someone to spoof our domain, we
+don&#x27;t want to someone to spoof emails. Time for &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.rfc-editor.org&#x2F;rfc&#x2F;rfc6376&quot;&gt;DKIM&lt;&#x2F;a&gt;, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.rfc-editor.org&#x2F;rfc&#x2F;rfc7208&quot;&gt;SPF&lt;&#x2F;a&gt;, and
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;DMARC&quot;&gt;DMARC&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;ProtonMail provides guides for setting up anti-spoofing for custom domains,
+including configuring DKIM, SPF, and DMARC records.&lt;&#x2F;p&gt;
+&lt;p&gt;Whew! That was a long detour, but we finally have a secure email address to use
+for &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&#x2F;docs&#x2F;kbfs&quot;&gt;Keybase&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;spamminess.png&quot; alt=&quot;Email Spamminess&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Once you&#x27;ve installed Keybase (e.g. &lt;code&gt;brew cask install keybase&lt;&#x2F;code&gt;), you&#x27;ll want to
+note down your &#x27;paper&#x27; key someplace safe (like, say, a Secure Note in
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;1password.com&quot;&gt;1Password&lt;&#x2F;a&gt;). And then, you&#x27;ll want to start adding identities, such as
+Twitter, GitHub, Reddit, and your website.&lt;&#x2F;p&gt;
+&lt;p&gt;This is pretty straightforward; you sign objects with your public key and
+post them someplace public on that service (e.g. a tweet, gist, post, or static
+file).&lt;&#x2F;p&gt;
+&lt;p&gt;For example, here&#x27;s my &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;acgetchell&#x2F;7b68d1168a45859624d0cb3369931ace&quot;&gt;GitHub proof&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;p&gt;The neat thing about Keybase is that you don&#x27;t need a central server to verify
+someone&#x27;s identity: you can do it yourself right from the command line:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;keybase-id-proof.png&quot; alt=&quot;Keybase proof from CLI&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now, if you want your website to be part of your identity, you&#x27;ll want it to be
+secure. My website happens to be generated by &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;blog.getpelican.com&quot;&gt;Pelican&lt;&#x2F;a&gt; and hosted on
+GitHub, for which I have 2-factor authentication turned on. But by default,
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;help.github.com&#x2F;articles&#x2F;securing-your-github-pages-site-with-https&#x2F;&quot;&gt;GitHub hosted sites only support SSL for &lt;code&gt;*.github.io&lt;&#x2F;code&gt; domains&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.cloudflare.com&quot;&gt;CloudFlare&lt;&#x2F;a&gt; does, sorta. So we come to the second reason for
+using CloudFlare: enabling &lt;code&gt;https&lt;&#x2F;code&gt; on your static, custom domain. It&#x27;s as easy
+as flicking a switch:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;github-ssl.png&quot; alt=&quot;GitHub SSL&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;HOWEVER&lt;&#x2F;strong&gt; this is not complete; it only encrypts communication between
+the client browser and CloudFlare. &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;help.github.com&#x2F;articles&#x2F;securing-your-github-pages-site-with-https&#x2F;&quot;&gt;The connection between CloudFlare and
+GitHub is unencrypted for custom domains&lt;&#x2F;a&gt;. It is also easy to do &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;thehackerblog.com&#x2F;keeping-positive-obtaining-arbitrary-wildcard-ssl-certificates-from-comodo-via-dangling-markup-injection&#x2F;index.html&quot;&gt;the
+wrong way&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;If you didn&#x27;t have a custom domain, then this doesn&#x27;t apply. But where&#x27;s the
+fun in that?&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, to prevent the client from downgrading from &lt;code&gt;https&lt;&#x2F;code&gt; to &lt;code&gt;http&lt;&#x2F;code&gt;, you can
+turn on HTTP Strict Transport Security &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.owasp.org&#x2F;index.php&#x2F;HTTP_Strict_Transport_Security_Cheat_Sheet&quot;&gt;(HSTS)&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;hsts.png&quot; alt=&quot;HTTP Strict Transport Security on CloudFlare&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This comes with some sizeable caveats, so definitely read them.&lt;&#x2F;p&gt;
+&lt;p&gt;At last, you can check your work here: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.internet.nl&quot;&gt;https:&#x2F;&#x2F;en.internet.nl&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;And now, finally, you have a &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;keybase.io&#x2F;docs&#x2F;kbfs&quot;&gt;nice, secure, publicly verifiable identity&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;keybase.png&quot; alt=&quot;Adam&amp;#39;s Keybase info&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;update&quot;&gt;Update&lt;&#x2F;h2&gt;
+&lt;p&gt;Here are two videos from CloudFlare on boosting site speed and security:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20171107000548&#x2F;https:&#x2F;&#x2F;vimeo.com&#x2F;157530322&quot;&gt;Increase the speed of your site - CloudFlare Performance Tips&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20171107000550&#x2F;https:&#x2F;&#x2F;vimeo.com&#x2F;162142298&quot;&gt;User Privacy &amp;amp; Data Integrity&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

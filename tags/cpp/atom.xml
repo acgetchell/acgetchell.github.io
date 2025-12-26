@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Adam&#x27;s Entropy - cpp</title>
+    <subtitle>One particular random walk through life.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://www.adamgetchell.org/tags/cpp/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.adamgetchell.org"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-05-20T12:57:43-07:00</updated>
+    <id>https://www.adamgetchell.org/tags/cpp/atom.xml</id>
+    <entry xml:lang="en">
+        <title>A Tale of Two Test Frameworks</title>
+        <published>2022-05-20T12:57:43-07:00</published>
+        <updated>2022-05-20T12:57:43-07:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.adamgetchell.org/posts/a-tale-of-two-test-frameworks/"/>
+        <id>https://www.adamgetchell.org/posts/a-tale-of-two-test-frameworks/</id>
+        
+        <content type="html" xml:base="https://www.adamgetchell.org/posts/a-tale-of-two-test-frameworks/">&lt;p&gt;As I&#x27;ve mentioned earlier, I&#x27;m writing some &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.adamgetchell.org&#x2F;CDT-plusplus&#x2F;&quot;&gt;scientific code&lt;&#x2F;a&gt; that needs to be accurate and fast.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;That is, some entity other than me should check for inevitable errors.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;So I started Test Driven Development using &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;google&#x2F;googletest&quot;&gt;GoogleTest&lt;&#x2F;a&gt;. Then I saw Behavior Driven Development (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cucumber.io&#x2F;docs&#x2F;gherkin&#x2F;reference&#x2F;&quot;&gt;BDD&lt;&#x2F;a&gt;) and switched to &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;catchorg&#x2F;Catch2&quot;&gt;Catch2&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This was a bit of a headache, as I had to essentially rewrite tests from scratch, but I learned to write better tests.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;That went well, but when I had a few folks look over the code, they noted the difficulty of getting the stack up and running&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Also, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gcc.gnu.org&quot;&gt;gcc&lt;&#x2F;a&gt; started not being able to compile the project with tests enabled, which you can check by running on Docker, as given below.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;So I looked around again, and found &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;doctest&#x2F;doctest&quot;&gt;doctest&lt;&#x2F;a&gt;, which was based on &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;catchorg&#x2F;Catch2&quot;&gt;Catch2&lt;&#x2F;a&gt; but offered &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;doctest&#x2F;doctest&#x2F;blob&#x2F;master&#x2F;doc&#x2F;markdown&#x2F;benchmarks.md&quot;&gt;much faster compile times&lt;&#x2F;a&gt; and the model of
+including tests right into the code (although I opted to keep them separate, for now). Around this time I&#x27;d asked someone else to look at a few things in my project, so
+it seemed like a good time to try it out.&lt;&#x2F;p&gt;
+&lt;p&gt;Then Catch2 dropped the long awaited &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;catchorg&#x2F;Catch2&#x2F;blob&#x2F;devel&#x2F;docs&#x2F;release-notes.md&quot;&gt;v3&lt;&#x2F;a&gt;, so --&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Yep, let&#x27;s compare.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;It turns out that much of the migration work I did from &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;catchorg&#x2F;Catch2&quot;&gt;Catch2&lt;&#x2F;a&gt; -&amp;gt; &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;doctest&#x2F;doctest&quot;&gt;doctest&lt;&#x2F;a&gt; was also necessary for Catch2 v2 -&amp;gt; Catch2 v3.&lt;&#x2F;p&gt;
+&lt;p&gt;So now I have &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;acgetchell&#x2F;CDT-plusplus&#x2F;tree&#x2F;feature&#x2F;doctest&quot;&gt;features&#x2F;doctest&lt;&#x2F;a&gt; and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;acgetchell&#x2F;CDT-plusplus&#x2F;tree&#x2F;feature&#x2F;catch2v3&quot;&gt;features&#x2F;catch2v3&lt;&#x2F;a&gt; for side-by-side comparison.&lt;&#x2F;p&gt;
+&lt;p&gt;Right away, I noticed that &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;releases.llvm.org&#x2F;13.0.0&#x2F;tools&#x2F;clang&#x2F;tools&#x2F;extra&#x2F;docs&#x2F;ReleaseNotes.html&quot;&gt;clang-tidy&lt;&#x2F;a&gt; does not like &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;doctest&#x2F;doctest&quot;&gt;doctest&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;adam@hapkido ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; $ clang-tidy&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; --version
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Homebrew&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; LLVM version 13.0.1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Optimized&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; build.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Default&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; target: arm64-apple-darwin21.5.0
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Host&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; CPU: cyclone
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;(&lt;em&gt;Full &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;acgetchell&#x2F;b1931e063ddfde033dd5702ee42d632f#file-doctest-clang-tidy&quot;&gt;doctest clang-tidy output&lt;&#x2F;a&gt;:&lt;&#x2F;em&gt;)&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;adam@hapkido ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;projects&#x2F;CDT-plusplus (develop) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; git checkout feature&#x2F;doctest
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Switched&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; to branch &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;feature&#x2F;doctest&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Your&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; branch is up to date with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;origin&#x2F;feature&#x2F;doctest&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;adam@hapkido ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;projects&#x2F;CDT-plusplus (feature&#x2F;doctest) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; cd scripts&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;adam@hapkido ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;projects&#x2F;CDT-plusplus&#x2F;scripts (feature&#x2F;doctest) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; .&#x2F;clang-tidy.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;...&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; elided ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;--&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; Build files have been written to: &#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;build
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;[2&#x2F;26]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; Building CXX object tests&#x2F;CMakeFiles&#x2F;CDT_test.dir&#x2F;Settings_test.cpp.o
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;tests&#x2F;Settings_test.cpp:19:1:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; warning: initialization of &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;DOCTEST_ANON_VAR_3&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; with static storage duration may throw an exception that cannot be caught &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;cert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;err58&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;cpp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;SCENARIO&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;quot;Check settings&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; doctest::may_fail())
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;^
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:2800:24:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; note: expanded from macro &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;SCENARIO&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#define SCENARIO(name) DOCTEST_SCENARIO(name)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;^
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:2716:32:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; note: expanded from macro &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;DOCTEST_SCENARIO&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#define DOCTEST_SCENARIO(name) DOCTEST_TEST_CASE(&amp;quot;  Scenario: &amp;quot; name)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;                               &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;^
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:2012:5:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; note: expanded from macro &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;DOCTEST_TEST_CASE&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;DOCTEST_CREATE_AND_REGISTER_FUNCTION&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;(DOCTEST_ANONYMOUS(DOCTEST_ANON_FUNC_)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; decorators)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;^
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;note:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; (skipping 3 expansions in backtrace&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;use -fmacro-backtrace-limit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;0 to see all)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:365:29:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; note: expanded from macro &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;DOCTEST_CAT&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#define DOCTEST_CAT(s1, s2) DOCTEST_CAT_IMPL(s1, s2)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;                            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;^
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:364:34:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; note: expanded from macro &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;DOCTEST_CAT_IMPL&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#5f697a;&quot;&gt;#define DOCTEST_CAT_IMPL(s1, s2) s1##s2
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;                                 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;^
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;note:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; expanded from here
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:1438:9:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; note: possibly throwing constructor declared here
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;TestCase&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;(funcType test, const char&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; file, unsigned line, const TestSuite&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;test_suite,
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;...&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; etc ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;However, it does swimmingly with &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;pvs-studio.com&#x2F;en&#x2F;&quot;&gt;PVS-Studio&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;&#x2F;html&#x2F;index-doctest.html&quot;&gt;Results&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now, let&#x27;s switch to the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;acgetchell&#x2F;CDT-plusplus&#x2F;tree&#x2F;feature&#x2F;catch2v3&quot;&gt;features&#x2F;catch2v3&lt;&#x2F;a&gt; branch:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;adam@hapkido ~&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;&#x2F;projects&#x2F;CDT-plusplus (feature&#x2F;doctest) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; git checkout feature&#x2F;catch2v3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Switched&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; to branch &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;feature&#x2F;catch2v3&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;Your&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; branch is up to date with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;origin&#x2F;feature&#x2F;catch2v3&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And run &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;releases.llvm.org&#x2F;13.0.0&#x2F;tools&#x2F;clang&#x2F;tools&#x2F;extra&#x2F;docs&#x2F;ReleaseNotes.html&quot;&gt;clang-tidy&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;...&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; elided ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;[13&#x2F;26]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; Building CXX object tests&#x2F;CMakeFiles&#x2F;CDT_test.dir&#x2F;Manifold_test.cpp.o
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;tests&#x2F;Manifold_test.cpp:179:9:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; warning: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;const auto manifold_type&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; can be declared as &lt;&#x2F;span&gt;&lt;span style=&quot;color:#9acc76;&quot;&gt;&amp;#39;const auto *const manifold_type&amp;#39; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;readability&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;qualified&lt;&#x2F;span&gt;&lt;span style=&quot;color:#adb7c9;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cd74e8;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; const  manifold_type = typeid(manifold.get_triangulation())&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5cb3fa;&quot;&gt;.name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        ^~~~~~~~~~
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;        const auto *const 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt;... etc ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;It&#x27;s pretty much clear of anything &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;catchorg&#x2F;Catch2&quot;&gt;Catch2&lt;&#x2F;a&gt;-related.&lt;&#x2F;p&gt;
+&lt;p&gt;However, the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;pvs-studio.com&#x2F;en&#x2F;&quot;&gt;PVS-Studio&lt;&#x2F;a&gt; output is tragic.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;&#x2F;html&#x2F;index-catch2.html&quot;&gt;Results&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Recall, these are the exact same tests!&lt;&#x2F;p&gt;
+&lt;p&gt;So, which one should I use going forward?&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;adamgetchell&#x2F;status&#x2F;1528791092748906496&quot;&gt;Twitter Poll&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;N.B. If you&#x27;re curious, you can play around with this yourself via &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.docker.com&quot;&gt;Docker&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#6c7079;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;docker&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; pull acgetchell&#x2F;cdt-plusplus
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt;docker&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eb6772;&quot;&gt; -it --name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#abb2bf;&quot;&gt; cdt acgetchell&#x2F;cdt-plusplus
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;From there, checkout &lt;code&gt;feature&#x2F;catch2v3&lt;&#x2F;code&gt; or &lt;code&gt;feature&#x2F;doctest&lt;&#x2F;code&gt;.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Running &lt;code&gt;scripts&#x2F;fast-build.sh&lt;&#x2F;code&gt; (i.e. no tests) will work, but compiling&#x2F;running tests with &lt;code&gt;scripts&#x2F;build.sh&lt;&#x2F;code&gt; fails.
+If you know why, &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;acgetchell&#x2F;CDT-plusplus&#x2F;pulls&quot;&gt;pull requests&lt;&#x2F;a&gt; are welcome!&lt;&#x2F;p&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;The project uses &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;CGAL&#x2F;cgal&quot;&gt;CGAL&lt;&#x2F;a&gt; which uses &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.boost.org&quot;&gt;Boost&lt;&#x2F;a&gt; and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;eigen.tuxfamily.org&#x2F;&quot;&gt;Eigen&lt;&#x2F;a&gt;, those dependencies alone account for over a hundred libraries. You absolutely need
+a package manager like &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;vcpkg.io&#x2F;en&#x2F;index.html&quot;&gt;vcpkg&lt;&#x2F;a&gt; to handle it sanely.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;You&#x27;ll need to obtain &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;pvs-studio.com&#x2F;en&#x2F;&quot;&gt;PVS-Studio&lt;&#x2F;a&gt; on your own license.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+</feed>

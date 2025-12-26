@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <title>https://adamgetchell.org/posts/</title>
-    <link rel="canonical" href="https://adamgetchell.org/posts/">
-    <meta name="robots" content="noindex">
-    <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=https://adamgetchell.org/posts/">
-  </head>
-</html>
+<!doctype html>
+<meta charset="utf-8">
+<title>Redirect</title>
+<script>
+  const target = "https://www.adamgetchell.org/posts/";
+  const hash = window.location.hash || "";
+  window.location.replace(target + hash);
+</script>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=https://www.adamgetchell.org/posts/">
+</noscript>
+<p><a href="https://www.adamgetchell.org/posts/">Click here</a> to be redirected.</p>
