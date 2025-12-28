@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css" integrity="sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link href="https://www.adamgetchell.org/deep-thought.css" rel="stylesheet" />
+  
+  
+
+  <title>
+    
+Adam&#x27;s Entropy | Building Delaunay Triangulations
+
+  </title>
+
+  
+  
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js" integrity="sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT" crossorigin="anonymous"></script>
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+  
+  
+</head>
+
+<body class="has-background-white">
+  <nav aria-label="section navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-5 has-text-weight-bold" href="https:&#x2F;&#x2F;www.adamgetchell.org">Adam&#x27;s Entropy</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          
+          
+          
+          
+          
+          
+            
+            
+            
+            
+            
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;about">
+            About
+          </a>
+          
+          
+          
+          
+            
+            
+            
+              
+            
+            
+            
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;">
+            Home
+          </a>
+          
+          
+          
+          
+            
+            
+            
+            
+            
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;papers">
+            Papers
+          </a>
+          
+          
+          
+          
+            
+            
+            
+            
+            
+              
+            
+          
+          <a class="navbar-item has-text-weight-semibold is-active" href="&#x2F;posts">
+            Posts
+          </a>
+          
+          
+          
+          
+            
+            
+            
+            
+            
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;projects">
+            Projects
+          </a>
+          
+          
+          
+          
+            
+            
+            
+            
+            
+          
+          <a class="navbar-item has-text-weight-semibold" href="&#x2F;tags">
+            Tags
+          </a>
+          
+          
+          
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <article class="box">
+          <h1 class="title">
+            Building Delaunay Triangulations
+          </h1>
+          <p class="subtitle"></p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="fas fa-user"></i>
+  </span>
+  <span>Adam Getchell published on</span>
+  <span class="icon">
+    <i class="far fa-calendar-alt"></i>
+  </span>
+  <span><time datetime="2025-12-27T15:10:20-08:00">December 27, 2025</time></span>
+</span>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<span class="icon-text has-text-grey">
+  <span class="icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span>5 min,</span>
+  <span class="icon">
+    <i class="fas fa-pencil-alt"></i>
+  </span>
+  <span>835 words</span>
+</span>
+
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+<p>
+  Tags:
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://www.adamgetchell.org/tags/cdt/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cdt</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://www.adamgetchell.org/tags/cgal/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>cgal</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://www.adamgetchell.org/tags/delaunay/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>delaunay</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://www.adamgetchell.org/tags/geometry/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>geometry</span>
+    </span>
+  </a>
+  
+  <a class="has-text-info-dark has-text-weight-semibold" href="https://www.adamgetchell.org/tags/triangulation/">
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fas fa-tag"></i>
+      </span>
+      <span>triangulation</span>
+    </span>
+  </a>
+  
+</p>
+
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p><a href="https://www.adamgetchell.org/posts/designing-a-metropolis-class/">Awhile ago</a>, I started discussing the internals of a Metropolis class for <a rel="noopener nofollow noreferrer" target="_blank" href="https://grokipedia.com/page/Markov_chain_Monte_Carlo">MCMC</a> sampling of ensembles
+produced by causal dynamical triangulations, a promising approach to quantum gravity that allows the use of computers. Well, since then I've experienced
+a number of things:</p>
+<ul>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cgal.org/">CGAL</a> is an amazing library with decades of scholarship behind it. However, to make use of it <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/CDT-plusplus">my implementation</a> required over
+160 other C++ libraries, including heavyweight dependencies like <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.boost.org/">Boost</a> and <a rel="noopener nofollow noreferrer" target="_blank" href="https://eigen.tuxfamily.org/dox/">Eigen</a>. I spent more time managing these dependencies than I
+did writing useful code to take advantage of CGAL's capabilities.</li>
+<li>I also found that implementing the <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.sciencedirect.com/science/article/pii/S0195669813800807">Pachner</a> moves necessary for <a rel="noopener nofollow noreferrer" target="_blank" href="https://arxiv.org/abs/hep-th/0105267">CDT</a> was more difficult than I expected, and I alternated between making progress and getting stuck on various issues ranging from various library bugs, to <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/bistellar-flip/">impedance mismatches</a>, down to compiler-level issues.</li>
+<li>Finally, I discovered that my particular use case for <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cgal.org/">CGAL</a> involved millions of repeated re-triangulations that resulted in various memory leaks, segfaults, and other impossible-for-me-to-debug issues. (Ironically, just keeping my project up-to-date with I filed many, <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/search?q=author%3Aacgetchell+is%3Aissue+cgal&amp;type=issues">many bug reports</a> exposing issues not seen in usual test cases.)</li>
+</ul>
+<p>All of this finally tipped the balance from "use these battle-tested libraries" to "roll my own implementation".</p>
+<p>After this experience, I decided that I wanted:</p>
+<ul>
+<li>A performant, memory and thread-safe language that allows me to do low-level things while managing complexity</li>
+<li>Ideally with a functional programming paradigm to make reasoning about code easier</li>
+<li>And a developer-friendly toolchain that makes things like dependency management, linting, testing, and documentation easy instead of a constant struggle</li>
+<li>With a reasonable ecosystem of libraries for numerical computing, linear algebra, and data visualization</li>
+</ul>
+<p>I chose <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.rust-lang.org/">Rust</a>.</p>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/CDT-plusplus">This project</a> has already progressed through numerous iterations and languages.
+The <a rel="noopener nofollow noreferrer" target="_blank" href="https://arxiv.org/pdf/1110.6875">first implementation</a> I started working with was in <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.sbcl.org">Lisp</a>; from there I attempted to port it to <a rel="noopener nofollow noreferrer" target="_blank" href="https://clojure.org/">Clojure</a> and then <a rel="noopener nofollow noreferrer" target="_blank" href="https://fsharp.org/">F#</a> before finding <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.cgal.org/">CGAL</a> and setting on a full re-write in <a rel="noopener nofollow noreferrer" target="_blank" href="https://isocpp.org/">C++</a>. That, in turn, led to many years of struggle.</p>
+<p>So, I started afresh with the building blocks<sup class="footnote-reference"><a href="#1">1</a></sup>: implement a Delaunay triangulation library for Rust, using CGAL as a reference implementation, with only the functionality I needed for <a rel="noopener nofollow noreferrer" target="_blank" href="https://arxiv.org/abs/hep-th/0105267">CDT</a>. Originally this library was called <code>d-delaunay</code>, but then I found the maintainer of the <code>delaunay</code> crate
+and after a brief discussion he agreed to transfer ownership to me. So now I've expanded the goals of the new crate to also be useful for the
+original users.</p>
+<p>Then AI came along and turbocharged my development efficiency. (In fact, there were so many game-changing moments that I was convinced to pursue further research and studies, but that's the topic for another post. 🙂)</p>
+<p>I have been able to rapidly iterate on the implementation. I have a much better understanding and appreciation for the algorithms in general and CGAL's
+design decisions in particular. And I have mostly followed CGAL's design, with a few guiding principles:</p>
+<ul>
+<li>Don't Repeat Yourself (DRY) - I love Rust macros!</li>
+<li>You Ain't Gonna Need It (YAGNI) - Only implement what is necessary, when it is necessary.</li>
+<li>Idiomatic Rust - I hope that the <a rel="noopener nofollow noreferrer" target="_blank" href="https://crates.io/crates/delaunay">delaunay</a> crate will feel natural to Rustaceans.</li>
+<li>Performance &amp; Memory Safety - This needs to be both fast and accurate. The CDT use case will re-triangulate millions of times per simulation. I love Rust error handling!</li>
+<li>Reproducibility &amp; Accuracy - Floating point errors are the bane of computational geometry. The library needs to be tested against and handle a wide
+range of edge cases. I love <a rel="noopener nofollow noreferrer" target="_blank" href="https://crates.io/crates/proptest">Property-Based Testing</a>! (And <a rel="noopener nofollow noreferrer" target="_blank" href="https://model-checking.github.io/kani/">Kani</a> is a stretch goal for formal verification of critical algorithms.)</li>
+</ul>
+<p>So, after a few years of intermittent work, I present to you <a rel="noopener nofollow noreferrer" target="_blank" href="https://crates.io/crates/delaunay">delaunay</a>!</p>
+<p>It's still a work in progress, but I am excited about the progress so far. You can see what's been done in the <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/delaunay/blob/main/CHANGELOG.md">CHANGELOG.md</a>, as well as what I'm
+still planning to do in the <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/delaunay/issues">issues</a> and <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/delaunay/tree/main/docs">documentation</a>.</p>
+<p>I look forward to sharing more about it in future posts!</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Said building blocks expanded to include fast linear algebra, which I started off by using <a rel="noopener nofollow noreferrer" target="_blank" href="https://crates.io/crates/nalgebra">nalgebra</a>, but then after testing wrote my own minimal
+<a rel="noopener nofollow noreferrer" target="_blank" href="https://crates.io/crates/la-stack">stack-based linear algebra library</a> optimized for small dimensions.</p>
+</div>
+
+          </div>
+        </article>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  
+  <section class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Search</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field mb-2">
+          <div class="control">
+            <input class="input" id="search" placeholder="Search this website." type="search" />
+          </div>
+        </div>
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </section>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </section>
+  
+
+
+  
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <nav class="level">
+          
+
+          
+
+          
+
+          
+
+          
+          
+<div class="level-item has-text-centered">
+  <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;www.adamgetchell.org&#x2F;posts&#x2F;a-tale-of-two-test-frameworks&#x2F;">
+    
+    <span class="icon mr-2">
+      <i class="fas fa-arrow-circle-left"></i>
+    </span>
+    
+    A Tale of Two Test Frameworks
+    
+  </a>
+</div>
+
+          
+
+          
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+
+
+  
+  <footer class="footer py-4">
+    <div class="content has-text-centered">
+      <p>
+        Built with
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-code"></i>
+          </span>
+          <span>code</span>
+        </span>
+        and
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span>love</span>
+        </span>
+      </p>
+      <p>
+        Powered by
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-power-off"></i>
+          </span>
+          <span>zola</span>
+        </span>
+      </p>
+    </div>
+  </footer>
+  
+
+  
+  
+  
+  
+  <script src="https://www.adamgetchell.org/elasticlunr.min.js"></script>
+  <script src="https://www.adamgetchell.org/search_index.en.js"></script><script src="https://www.adamgetchell.org/js/site.js"></script>
+
+  
+
+
+
+
+
+  
+  
+</body>
+
+</html>

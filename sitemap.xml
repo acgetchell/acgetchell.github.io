@@ -19,6 +19,10 @@
         <lastmod>2016-08-15</lastmod>
     </url>
     <url>
+        <loc>https://www.adamgetchell.org/posts/2025-12-27-building-delaunay-triangulations/</loc>
+        <lastmod>2025-12-27T15:10:20-08:00</lastmod>
+    </url>
+    <url>
         <loc>https://www.adamgetchell.org/posts/a-tale-of-two-test-frameworks/</loc>
         <lastmod>2022-05-20T12:57:43-07:00</lastmod>
     </url>
@@ -81,6 +85,12 @@
     </url>
     <url>
         <loc>https://www.adamgetchell.org/tags/doctest/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://www.adamgetchell.org/tags/geometry/</loc>
+    </url>
+    <url>
+        <loc>https://www.adamgetchell.org/tags/geometry/page/1/</loc>
     </url>
     <url>
         <loc>https://www.adamgetchell.org/tags/github/</loc>
@@ -171,5 +181,11 @@
     </url>
     <url>
         <loc>https://www.adamgetchell.org/tags/testing/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://www.adamgetchell.org/tags/triangulation/</loc>
+    </url>
+    <url>
+        <loc>https://www.adamgetchell.org/tags/triangulation/page/1/</loc>
     </url>
 </urlset>
