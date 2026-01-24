@@ -280,65 +280,65 @@ it seemed like a good time to try it out.</p>
 <p>It turns out that much of the migration work I did from <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/catchorg/Catch2">Catch2</a> -&gt; <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/doctest/doctest">doctest</a> was also necessary for Catch2 v2 -&gt; Catch2 v3.</p>
 <p>So now I have <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/CDT-plusplus/tree/feature/doctest">features/doctest</a> and <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/CDT-plusplus/tree/feature/catch2v3">features/catch2v3</a> for side-by-side comparison.</p>
 <p>Right away, I noticed that <a rel="noopener nofollow noreferrer" target="_blank" href="https://releases.llvm.org/13.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html">clang-tidy</a> does not like <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/doctest/doctest">doctest</a>:</p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">adam@hapkido ~</span><span style="color:#abb2bf;"> $ clang-tidy</span><span style="color:#eb6772;"> --version
-</span><span style="color:#eb6772;">Homebrew</span><span style="color:#abb2bf;"> LLVM version 13.0.1
-</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">Optimized</span><span style="color:#abb2bf;"> build.
-</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">Default</span><span style="color:#abb2bf;"> target: arm64-apple-darwin21.5.0
-</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">Host</span><span style="color:#abb2bf;"> CPU: cyclone
-</span></code></pre>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">adam@hapkido ~ $ clang-tidy --version
+Homebrew LLVM version 13.0.1
+  Optimized build.
+  Default target: arm64-apple-darwin21.5.0
+  Host CPU: cyclone
+</code></pre>
 <p>(<em>Full <a rel="noopener nofollow noreferrer" target="_blank" href="https://gist.github.com/acgetchell/b1931e063ddfde033dd5702ee42d632f#file-doctest-clang-tidy">doctest clang-tidy output</a>:</em>)</p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">adam@hapkido ~</span><span style="color:#abb2bf;">/projects/CDT-plusplus (develop) </span><span style="color:#eb6772;">$</span><span style="color:#abb2bf;"> git checkout feature/doctest
-</span><span style="color:#eb6772;">Switched</span><span style="color:#abb2bf;"> to branch </span><span style="color:#9acc76;">&#39;feature/doctest&#39;
-</span><span style="color:#eb6772;">Your</span><span style="color:#abb2bf;"> branch is up to date with </span><span style="color:#9acc76;">&#39;origin/feature/doctest&#39;</span><span style="color:#abb2bf;">.
-</span><span style="color:#eb6772;">adam@hapkido ~</span><span style="color:#abb2bf;">/projects/CDT-plusplus (feature/doctest) </span><span style="color:#eb6772;">$</span><span style="color:#abb2bf;"> cd scripts/
-</span><span style="color:#eb6772;">adam@hapkido ~</span><span style="color:#abb2bf;">/projects/CDT-plusplus/scripts (feature/doctest) </span><span style="color:#eb6772;">$</span><span style="color:#abb2bf;"> ./clang-tidy.sh
-</span><span style="color:#abb2bf;">
-</span><span style="color:#eb6772;">...</span><span style="color:#abb2bf;"> elided ...
-</span><span style="color:#abb2bf;">
-</span><span style="color:#eb6772;">--</span><span style="color:#abb2bf;"> Build files have been written to: /Users/adam/projects/CDT-plusplus/build
-</span><span style="color:#eb6772;">[2/26]</span><span style="color:#abb2bf;"> Building CXX object tests/CMakeFiles/CDT_test.dir/Settings_test.cpp.o
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/tests/Settings_test.cpp:19:1:</span><span style="color:#abb2bf;"> warning: initialization of </span><span style="color:#9acc76;">&#39;DOCTEST_ANON_VAR_3&#39;</span><span style="color:#abb2bf;"> with static storage duration may throw an exception that cannot be caught </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">cert</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">err58</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">cpp</span><span style="color:#cd74e8;">]
-</span><span style="color:#eb6772;">SCENARIO</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;Check settings&quot; </span><span style="color:#adb7c9;">*</span><span style="color:#abb2bf;"> doctest::may_fail())
-</span><span style="color:#eb6772;">^
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:2800:24:</span><span style="color:#abb2bf;"> note: expanded from macro </span><span style="color:#9acc76;">&#39;SCENARIO&#39;
-</span><span style="font-style:italic;color:#5f697a;">#define SCENARIO(name) DOCTEST_SCENARIO(name)
-</span><span style="color:#abb2bf;">                       </span><span style="color:#eb6772;">^
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:2716:32:</span><span style="color:#abb2bf;"> note: expanded from macro </span><span style="color:#9acc76;">&#39;DOCTEST_SCENARIO&#39;
-</span><span style="font-style:italic;color:#5f697a;">#define DOCTEST_SCENARIO(name) DOCTEST_TEST_CASE(&quot;  Scenario: &quot; name)
-</span><span style="color:#abb2bf;">                               </span><span style="color:#eb6772;">^
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:2012:5:</span><span style="color:#abb2bf;"> note: expanded from macro </span><span style="color:#9acc76;">&#39;DOCTEST_TEST_CASE&#39;
-</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">DOCTEST_CREATE_AND_REGISTER_FUNCTION</span><span style="color:#abb2bf;">(DOCTEST_ANONYMOUS(DOCTEST_ANON_FUNC_)</span><span style="color:#eb6772;">,</span><span style="color:#abb2bf;"> decorators)
-</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">^
-</span><span style="color:#eb6772;">note:</span><span style="color:#abb2bf;"> (skipping 3 expansions in backtrace</span><span style="color:#adb7c9;">; </span><span style="color:#eb6772;">use -fmacro-backtrace-limit</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">0 to see all)
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:365:29:</span><span style="color:#abb2bf;"> note: expanded from macro </span><span style="color:#9acc76;">&#39;DOCTEST_CAT&#39;
-</span><span style="font-style:italic;color:#5f697a;">#define DOCTEST_CAT(s1, s2) DOCTEST_CAT_IMPL(s1, s2)
-</span><span style="color:#abb2bf;">                            </span><span style="color:#eb6772;">^
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:364:34:</span><span style="color:#abb2bf;"> note: expanded from macro </span><span style="color:#9acc76;">&#39;DOCTEST_CAT_IMPL&#39;
-</span><span style="font-style:italic;color:#5f697a;">#define DOCTEST_CAT_IMPL(s1, s2) s1##s2
-</span><span style="color:#abb2bf;">                                 </span><span style="color:#eb6772;">^
-</span><span style="color:#eb6772;">note:</span><span style="color:#abb2bf;"> expanded from here
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/vcpkg_installed/arm64-osx/include/doctest/doctest.h:1438:9:</span><span style="color:#abb2bf;"> note: possibly throwing constructor declared here
-</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">TestCase</span><span style="color:#abb2bf;">(funcType test, const char</span><span style="color:#adb7c9;">*</span><span style="color:#abb2bf;"> file, unsigned line, const TestSuite</span><span style="color:#adb7c9;">&amp; </span><span style="color:#eb6772;">test_suite,
-</span><span style="color:#abb2bf;">
-</span><span style="color:#eb6772;">...</span><span style="color:#abb2bf;"> etc ...
-</span></code></pre>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">adam@hapkido ~&#x2F;projects&#x2F;CDT-plusplus (develop) $ git checkout feature&#x2F;doctest
+Switched to branch &#x27;feature&#x2F;doctest&#x27;
+Your branch is up to date with &#x27;origin&#x2F;feature&#x2F;doctest&#x27;.
+adam@hapkido ~&#x2F;projects&#x2F;CDT-plusplus (feature&#x2F;doctest) $ cd scripts&#x2F;
+adam@hapkido ~&#x2F;projects&#x2F;CDT-plusplus&#x2F;scripts (feature&#x2F;doctest) $ .&#x2F;clang-tidy.sh
+
+... elided ...
+
+-- Build files have been written to: &#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;build
+[2&#x2F;26] Building CXX object tests&#x2F;CMakeFiles&#x2F;CDT_test.dir&#x2F;Settings_test.cpp.o
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;tests&#x2F;Settings_test.cpp:19:1: warning: initialization of &#x27;DOCTEST_ANON_VAR_3&#x27; with static storage duration may throw an exception that cannot be caught [cert-err58-cpp]
+SCENARIO(&quot;Check settings&quot; * doctest::may_fail())
+^
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:2800:24: note: expanded from macro &#x27;SCENARIO&#x27;
+#define SCENARIO(name) DOCTEST_SCENARIO(name)
+                       ^
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:2716:32: note: expanded from macro &#x27;DOCTEST_SCENARIO&#x27;
+#define DOCTEST_SCENARIO(name) DOCTEST_TEST_CASE(&quot;  Scenario: &quot; name)
+                               ^
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:2012:5: note: expanded from macro &#x27;DOCTEST_TEST_CASE&#x27;
+    DOCTEST_CREATE_AND_REGISTER_FUNCTION(DOCTEST_ANONYMOUS(DOCTEST_ANON_FUNC_), decorators)
+    ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:365:29: note: expanded from macro &#x27;DOCTEST_CAT&#x27;
+#define DOCTEST_CAT(s1, s2) DOCTEST_CAT_IMPL(s1, s2)
+                            ^
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:364:34: note: expanded from macro &#x27;DOCTEST_CAT_IMPL&#x27;
+#define DOCTEST_CAT_IMPL(s1, s2) s1##s2
+                                 ^
+note: expanded from here
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;vcpkg_installed&#x2F;arm64-osx&#x2F;include&#x2F;doctest&#x2F;doctest.h:1438:9: note: possibly throwing constructor declared here
+        TestCase(funcType test, const char* file, unsigned line, const TestSuite&amp; test_suite,
+
+... etc ...
+</code></pre>
 <p>However, it does swimmingly with <a rel="noopener nofollow noreferrer" target="_blank" href="https://pvs-studio.com/en/">PVS-Studio</a>:</p>
 <p><a href="/html/index-doctest.html">Results</a></p>
 <p>Now, let's switch to the <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/CDT-plusplus/tree/feature/catch2v3">features/catch2v3</a> branch:</p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">adam@hapkido ~</span><span style="color:#abb2bf;">/projects/CDT-plusplus (feature/doctest) </span><span style="color:#eb6772;">$</span><span style="color:#abb2bf;"> git checkout feature/catch2v3
-</span><span style="color:#eb6772;">Switched</span><span style="color:#abb2bf;"> to branch </span><span style="color:#9acc76;">&#39;feature/catch2v3&#39;
-</span><span style="color:#eb6772;">Your</span><span style="color:#abb2bf;"> branch is up to date with </span><span style="color:#9acc76;">&#39;origin/feature/catch2v3&#39;</span><span style="color:#abb2bf;">.
-</span></code></pre>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">adam@hapkido ~&#x2F;projects&#x2F;CDT-plusplus (feature&#x2F;doctest) $ git checkout feature&#x2F;catch2v3
+Switched to branch &#x27;feature&#x2F;catch2v3&#x27;
+Your branch is up to date with &#x27;origin&#x2F;feature&#x2F;catch2v3&#x27;.
+</code></pre>
 <p>And run <a rel="noopener nofollow noreferrer" target="_blank" href="https://releases.llvm.org/13.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html">clang-tidy</a>:</p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">...</span><span style="color:#abb2bf;"> elided ...
-</span><span style="color:#eb6772;">[13/26]</span><span style="color:#abb2bf;"> Building CXX object tests/CMakeFiles/CDT_test.dir/Manifold_test.cpp.o
-</span><span style="color:#eb6772;">/Users/adam/projects/CDT-plusplus/tests/Manifold_test.cpp:179:9:</span><span style="color:#abb2bf;"> warning: </span><span style="color:#9acc76;">&#39;const auto manifold_type&#39;</span><span style="color:#abb2bf;"> can be declared as </span><span style="color:#9acc76;">&#39;const auto *const manifold_type&#39; </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">readability</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">qualified</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">auto</span><span style="color:#cd74e8;">]
-</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">auto</span><span style="color:#abb2bf;"> const  manifold_type = typeid(manifold.get_triangulation())</span><span style="color:#5cb3fa;">.name</span><span style="color:#abb2bf;">();
-</span><span style="color:#abb2bf;">        ^~~~~~~~~~
-</span><span style="color:#abb2bf;">        const auto *const 
-</span><span style="color:#abb2bf;">
-</span><span style="color:#abb2bf;">... etc ...
-</span></code></pre>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">... elided ...
+[13&#x2F;26] Building CXX object tests&#x2F;CMakeFiles&#x2F;CDT_test.dir&#x2F;Manifold_test.cpp.o
+&#x2F;Users&#x2F;adam&#x2F;projects&#x2F;CDT-plusplus&#x2F;tests&#x2F;Manifold_test.cpp:179:9: warning: &#x27;const auto manifold_type&#x27; can be declared as &#x27;const auto *const manifold_type&#x27; [readability-qualified-auto]
+        auto const  manifold_type = typeid(manifold.get_triangulation()).name();
+        ^~~~~~~~~~
+        const auto *const 
+
+... etc ...
+</code></pre>
 <p>It's pretty much clear of anything <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/catchorg/Catch2">Catch2</a>-related.</p>
 <p>However, the <a rel="noopener nofollow noreferrer" target="_blank" href="https://pvs-studio.com/en/">PVS-Studio</a> output is tragic.</p>
 <p><a href="/html/index-catch2.html">Results</a></p>
@@ -346,9 +346,9 @@ it seemed like a good time to try it out.</p>
 <p>So, which one should I use going forward?</p>
 <p><a rel="noopener nofollow noreferrer" target="_blank" href="https://twitter.com/adamgetchell/status/1528791092748906496">Twitter Poll</a></p>
 <p>N.B. If you're curious, you can play around with this yourself via <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.docker.com">Docker</a>:</p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">docker</span><span style="color:#abb2bf;"> pull acgetchell/cdt-plusplus
-</span><span style="color:#eb6772;">docker</span><span style="color:#abb2bf;"> run</span><span style="color:#eb6772;"> -it --name</span><span style="color:#abb2bf;"> cdt acgetchell/cdt-plusplus
-</span></code></pre>
+<pre data-lang="bash" class="language-bash "><code class="language-bash" data-lang="bash">docker pull acgetchell&#x2F;cdt-plusplus
+docker run -it --name cdt acgetchell&#x2F;cdt-plusplus
+</code></pre>
 <p>From there, checkout <code>feature/catch2v3</code> or <code>feature/doctest</code>.<sup class="footnote-reference"><a href="#2">2</a></sup></p>
 <p>Running <code>scripts/fast-build.sh</code> (i.e. no tests) will work, but compiling/running tests with <code>scripts/build.sh</code> fails.
 If you know why, <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/acgetchell/CDT-plusplus/pulls">pull requests</a> are welcome!</p>
